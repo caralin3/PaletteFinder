@@ -64,7 +64,7 @@ class DisconnectedLoginForm extends React.Component<LoginFormProps, LoginFormSta
         error: null,
         password: '',
       });
-      history.push('/Home');
+      history.push('/admin');
     })
     .catch((error: any) => {
       this.setState({ error });

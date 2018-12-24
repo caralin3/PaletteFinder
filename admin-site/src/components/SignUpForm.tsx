@@ -116,7 +116,7 @@ class DisconnectedSignUpForm extends React.Component<SignUpMergedProps, SignUpFo
         password: '',
         passwordConfirm: '',
       });
-      history.push('/Home');
+      history.push('admin');
     })
     .catch((error: any) => {
       this.setState({ error });

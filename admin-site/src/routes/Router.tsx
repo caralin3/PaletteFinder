@@ -11,7 +11,7 @@ export const Router = ({ history }: { history: History.History }) => (
   <ConnectedRouter history={history}>
     <Switch>
       <Route exact={true} path={'/'} component={LandingPage} />
-      <Route path={'/Home'} component={HomePage} />
+      <Route path={'/admin'} component={HomePage} />
     </Switch>
   </ConnectedRouter>
 );
