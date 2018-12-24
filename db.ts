@@ -1,4 +1,4 @@
-const palettes = [
+export const palettes = [
   {
     "score": 6,
     "palette": "Urban Decay Born to Run Eyeshadow Palette",
@@ -175,5 +175,3 @@ const palettes = [
     "link": "https://colourpop.com/products/brown-sugar"
   }
 ]
-
-module.exports = palettes;

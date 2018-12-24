@@ -1,8 +1,5 @@
-# React Firebase Starter
+# Palette Finder Admin
 
-Modeled after this tutorial https://www.robinwieruch.de/complete-firebase-authentication-react-tutorial/#react-firebase-authentication-redux
-
-A React Firebase App Starter Kit created with `create-react-app`
 Includes the following libraries:
 
 * TypeScript
@@ -10,5 +7,3 @@ Includes the following libraries:
 * redux
 * redux-persist
 * firebase
-
-Uses Firebase for Authentication and the RealTime Database
