@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Route, Switch } from 'react-router';
 import {
   AddPage,
+  EditPage,
   HomePage,
   LandingPage
 } from '../pages';
@@ -13,7 +14,7 @@ export const Router = ({ history }: { history: History.History }) => (
     <Switch>
       <Route exact={true} path={'/'} component={LandingPage} />
       <Route path={'/admin/add'} component={AddPage} />
-      <Route path={'/admin/edit'} component={HomePage} />
+      <Route path={'/admin/edit'} component={EditPage} />
       <Route path={'/admin'} component={HomePage} />
     </Switch>
   </ConnectedRouter>

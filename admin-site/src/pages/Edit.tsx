@@ -8,7 +8,7 @@ import { Header, PaletteForm } from '../components';
 import { ApplicationState } from '../store';
 import { User } from '../types';
 
-export interface AddPageProps { }
+export interface EditPageProps { }
 
 interface DispatchMappedProps {
   dispatch: Dispatch<any>;
@@ -18,20 +18,20 @@ interface StateMappedProps {
   currentUser: User | null;
 }
 
-interface AddMergedProps extends
+interface EditMergedProps extends
   RouteComponentProps,
   StateMappedProps,
   DispatchMappedProps,
-  AddPageProps {}
+  EditPageProps {}
 
-export interface AddPageState {}
+export interface EditPageState {}
 
-class DisconnectedAddPage extends React.Component<AddMergedProps, AddPageState> {
-  public readonly state: AddPageState = {  }
+class DisconnectedEditPage extends React.Component<EditMergedProps, EditPageState> {
+  public readonly state: EditPageState = {  }
 
   public render() {
     return (
-      <div className="add">
+      <div className="edit">
         <Header />
         <PaletteForm />
       </div>
@@ -47,8 +47,8 @@ const mapStateToProps = (state: ApplicationState) => ({
   currentUser: state.sessionState.currentUser,
 });
 
-export const AddPage = compose(
+export const EditPage = compose(
   withRouter,
   withAuthorization(authCondition),
   connect(mapStateToProps, mapDispatchToProps)
-)(DisconnectedAddPage);
+)(DisconnectedEditPage);
