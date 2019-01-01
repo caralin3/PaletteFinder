@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 import { Dispatch } from 'redux';
 import { withAuthorization } from '../auth/withAuthorization';
 import { Header } from '../components';
 import { ApplicationState } from '../store';
 import { User } from '../types';
+import './Home.css';
 
 export interface HomePageProps { }
 
@@ -33,6 +35,10 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
     return (
       <div className="home">
         <Header />
+        <div className="home_header">
+          <span className="home_title">Palettes</span>
+          <Link className="home_add" to="/admin/add">+</Link>
+        </div>
       </div>
     )
   }

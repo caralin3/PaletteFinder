@@ -1,0 +1,30 @@
+.home {
+
+}
+
+.home_header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.home_title {
+  font-size: 20px;
+}
+
+.home_add {
+  background-color: rgb(252, 97, 2);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  height: 25px;
+  padding: 0.5rem;
+  text-align: center;
+  width: 25px;
+}
+
+.home_add:focus,
+.home_add:hover {
+  cursor: pointer;
+}
