@@ -95,7 +95,7 @@ class DisconnectedAddPage extends React.Component<AddMergedProps, AddPageState> 
               <label className="addForm_label">
                 <span className="addForm_label-text">Link</span>
                 <input
-                  className="addForm_input"
+                  className="addForm_input addForm_link"
                   placeholder="Link to palette"
                   onChange={(e) => this.handleChange(e, 'link')}
                   type="text"
