@@ -6,22 +6,25 @@ import { Dispatch } from 'redux';
 import { auth, db } from '../firebase';
 import { User } from '../types';
 import { Form } from './';
+import './SignUpForm.css';
 
-interface SignUpFormProps extends RouteComponentProps {}
+interface SignUpFormProps {
+  onClick: () => void;
+}
 
 interface DispatchMappedProps {
   dispatch: Dispatch<any>;
 }
 
 interface SignUpMergedProps extends
+  RouteComponentProps,
   DispatchMappedProps,
   SignUpFormProps {}
 
 interface SignUpFormState {
   email: string;
   error: any;
-  firstName: string;
-  lastName: string;
+  name: string;
   password: string;
   passwordConfirm: string;
 }
@@ -30,57 +33,59 @@ class DisconnectedSignUpForm extends React.Component<SignUpMergedProps, SignUpFo
   public readonly state: SignUpFormState = {
     email: '',
     error: null,
-    firstName: '',
-    lastName: '',
+    name: '',
     password: '',
     passwordConfirm: '',
   }
 
   public render() {
-    const { email, error, firstName, lastName, password, passwordConfirm } = this.state;
+    const { email, error, name, password, passwordConfirm } = this.state;
 
-    const isInvalid = password !== passwordConfirm || !password || !email || !firstName || !lastName;
+    const isInvalid = password !== passwordConfirm || !password || !email || !name;
 
     return (
       <div className='signupForm'>
         <Form buttonText='Sign Up' disabled={isInvalid} submit={this.handleSubmit}>
-          {error && <p>{error.message}</p>}
-          <input
-            className='signupForm_input'
-            onChange={(e) => this.handleChange(e, 'firstName')}
-            placeholder='First Name'
-            type='text'
-            value={firstName}
-          />
-          <input
-            className='signupForm_input'
-            onChange={(e) => this.handleChange(e, 'lastName')}
-            placeholder='Last Name'
-            type='text'
-            value={lastName}
-          />
-          <input
-            className='signupForm_input'
-            onChange={(e) => this.handleChange(e, 'email')}
-            placeholder='Email Address'
-            type='text'
-            value={email}
-          />
-          <input
-            className='signupForm_input'
-            onChange={(e) => this.handleChange(e, 'password')}
-            placeholder='Password'
-            type='password'
-            value={password}
-          />
-          <input
-            className='signupForm_input'
-            onChange={(e) => this.handleChange(e, 'passwordConfirm')}
-            placeholder='Confirm Password'
-            type='password'
-            value={passwordConfirm}
-          />
+          <div className="signupForm_form">
+            <h2 className="signupForm_title">Sign Up</h2>
+            {error && <p>{error.message}</p>}
+            <label className="signupForm_label">Name</label>
+            <input
+              className='signupForm_input'
+              onChange={(e) => this.handleChange(e, 'name')}
+              placeholder='Name'
+              type='text'
+              value={name}
+            />
+            <label className="signupForm_label">Email</label>
+            <input
+              className='signupForm_input'
+              onChange={(e) => this.handleChange(e, 'email')}
+              placeholder='Email Address'
+              type='text'
+              value={email}
+            />
+            <label className="signupForm_label">Password</label>
+            <input
+              className='signupForm_input'
+              onChange={(e) => this.handleChange(e, 'password')}
+              placeholder='Password'
+              type='password'
+              value={password}
+            />
+            <label className="signupForm_label">Confirm Password</label>
+            <input
+              className='signupForm_input'
+              onChange={(e) => this.handleChange(e, 'passwordConfirm')}
+              placeholder='Confirm Password'
+              type='password'
+              value={passwordConfirm}
+            />
+          </div>
         </Form>
+        <div>
+          Already have an account? | <span className="signupForm_login" onClick={this.props.onClick}>Login</span>
+        </div>
       </div>
     )
   }
@@ -92,17 +97,18 @@ class DisconnectedSignUpForm extends React.Component<SignUpMergedProps, SignUpFo
   }
 
   private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    const { email, firstName, lastName, password } = this.state;
+    const { email, name, password } = this.state;
     const { dispatch, history } = this.props;
+    const names = name.split(' ');
 
     event.preventDefault();
     auth.doCreateUserWithEmailAndPassword(email, password)
     .then(async (user: any) => {
       const currentUser: User = {
         email,
-        firstName,
+        firstName: names[0],
         id: user.user.uid,
-        lastName,
+        lastName: names[1],
       };
       // Create a user in database
       await db.requests.users.createUser(currentUser, dispatch);
@@ -111,8 +117,7 @@ class DisconnectedSignUpForm extends React.Component<SignUpMergedProps, SignUpFo
       this.setState({
         email: '',
         error: null,
-        firstName: '',
-        lastName: '',
+        name: '',
         password: '',
         passwordConfirm: '',
       });
@@ -129,4 +134,4 @@ const mapDispatchToProps = (dispatch: Dispatch<any>): DispatchMappedProps => ({ 
 export const SignUpForm = compose(
   withRouter,
   connect(null, mapDispatchToProps)
-)(DisconnectedSignUpForm);
+)(DisconnectedSignUpForm) as any;

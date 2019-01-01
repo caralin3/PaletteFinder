@@ -2,8 +2,11 @@ import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { auth } from '../firebase';
 import { Form } from './';
+import './LoginForm.css';
 
-interface LoginFormProps extends RouteComponentProps {}
+interface LoginFormProps extends RouteComponentProps {
+  onClick: () => void;
+}
 
 interface LoginFormState {
   email: string;
@@ -26,22 +29,30 @@ class DisconnectedLoginForm extends React.Component<LoginFormProps, LoginFormSta
     return (
       <div className='loginForm'>
         <Form buttonText='Log In' disabled={isInvalid} submit={this.handleSubmit}>
-          {error && <p>{error.message}</p>}
-          <input
-            className='loginForm_input'
-            onChange={(e) => this.handleChange(e, 'email')}
-            placeholder='Email Address'
-            type='text'
-            value={email}
-          />
-          <input
-            className='loginForm_input'
-            placeholder='Password'
-            onChange={(e) => this.handleChange(e, 'password')}
-            type='password'
-            value={password}
-          />
+          <div className="loginForm_form">
+            <h2 className="loginForm_title">Login</h2>
+            {error && <p>{error.message}</p>}
+            <label className="loginForm_label">Email</label>
+            <input
+              className='loginForm_input'
+              onChange={(e) => this.handleChange(e, 'email')}
+              placeholder='Email Address'
+              type='text'
+              value={email}
+            />
+            <label className="loginForm_label">Password</label>
+            <input
+              className='loginForm_input'
+              placeholder='Password'
+              onChange={(e) => this.handleChange(e, 'password')}
+              type='password'
+              value={password}
+            />
+          </div>
         </Form>
+        <div>
+          Don't have an account? | <span className="loginForm_signup" onClick={this.props.onClick}>Sign Up</span>
+        </div>
       </div>
     )
   }

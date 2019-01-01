@@ -1,4 +1,6 @@
 import * as React from 'react';
+import './Button.css';
+import './Form.css';
 
 export interface FormProps {
   buttonText: string;
@@ -13,7 +15,11 @@ export const Form: React.SFC<FormProps> = (props) => (
       <div className={`form_fields ${props.className}`}>
         { props.children }
       </div>
-      <button className={props.disabled ? 'form_button-disabled' : 'form_button'} type="submit" disabled={props.disabled}>
+      <button
+        className={props.disabled ? 'button-disabled' : 'button'}
+        disabled={props.disabled}
+        type="submit"
+      >
         { props.buttonText }
       </button>
     </form>

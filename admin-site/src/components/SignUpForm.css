@@ -1,0 +1,48 @@
+.signupForm {
+  background-color: #000;
+  color: #fff;
+  padding: 2rem 4rem;
+}
+
+.signupForm_title {
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+.signupForm_form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signupForm_input {
+  font-size: 14px;
+}
+
+.signupForm_label {
+  align-self: flex-start;
+  padding: 1rem 0 0.5rem;
+}
+
+.signupForm_login:focus,
+.signupForm_login:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 640px) {
+  .signupForm {
+    padding: 2rem;
+  }
+
+  .signupForm_title {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 568px) {
+  .signupForm {
+    padding: 1.5rem;
+  }
+}

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { LoginForm, SignUpForm } from '../components';
+import './Landing.css';
 
 interface LandingPageProps {}
 
@@ -16,14 +17,10 @@ export class LandingPage extends React.Component<LandingPageProps, LandingPageSt
     const { login } = this.state;
 
     return (
-      <div>
-        {login ? <LoginForm /> :
-        <SignUpForm />}
-        {login ? <div>
-          Don't have an account? | <span onClick={() => this.setState({login: false})}>Sign Up</span>
-        </div> : <div>
-          Already have an account? | <span onClick={() => this.setState({login: true})}>Login</span>
-        </div>}
+      <div className="landing">
+        <h1 className="landing_title">Eyeshadow Palette Finder Admin</h1>
+        {login ? <LoginForm onClick={() => this.setState({login: false})} /> :
+        <SignUpForm onClick={() => this.setState({login: true})} />}
       </div>
     )
   }
