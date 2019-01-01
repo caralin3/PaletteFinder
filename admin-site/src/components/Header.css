@@ -1,0 +1,25 @@
+.header {
+  align-items: center;
+  background-color: #e90798;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.header_title {
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.header_cta:focus,
+.header_cta:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 568px) {
+  .header_title,
+  .header_cta {
+    font-size: 14px;
+  }
+}

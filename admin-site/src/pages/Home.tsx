@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import { compose } from 'recompose';
 import { Dispatch } from 'redux';
 import { withAuthorization } from '../auth/withAuthorization';
-import { auth } from '../firebase';
+import { Header } from '../components';
 import { ApplicationState } from '../store';
 import { User } from '../types';
 
@@ -32,9 +32,7 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
   public render() {
     return (
       <div className="home">
-        Home
-        {this.props.currentUser ? this.props.currentUser.firstName : 'None'}
-        <span onClick={() => auth.doSignOut()}>Logout</span>
+        <Header />
       </div>
     )
   }
