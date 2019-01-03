@@ -10,6 +10,13 @@
   padding: 1rem;
 }
 
+.home_empty {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 .home_title {
   font-size: 20px;
 }

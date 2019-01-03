@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { compose } from 'recompose';
 import { Dispatch } from 'redux';
-import { palettes } from '../db';
+import { requests } from '../firebase/db';
 import { ApplicationState } from '../store';
+import { Palette, Palettes } from '../types';
 import { Form } from './';
 import './PaletteForm.css';
 
@@ -16,6 +17,7 @@ interface DispatchMappedProps {
 }
 
 interface StateMappedProps {
+  palettes: Palettes | null;
   router: RouterState;
 }
 
@@ -30,29 +32,33 @@ interface PaletteFormMergedProps extends
   PaletteFormProps {}
 
 export interface PaletteFormState {
+  changed: boolean;
   description: string;
   id: string;
   image: string;
   link: string;
   name: string;
+  palette: Palette;
   price: number;
   score: number;
 }
 
 class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, PaletteFormState> {
   public readonly state: PaletteFormState = {
+    changed: true,
     description: '',
     id: '',
     image: '',
     link: '',
     name: '',
+    palette: {} as Palette,
     price: 0,
     score: 0,
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     const id = this.props.match.params.id;
-    const palette = palettes[id];
+    const palette = this.props.palettes ? this.props.palettes[id] : {} as Palette;
     if (id) {
       this.setState({
         description: palette.description,
@@ -60,6 +66,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
         // image: '',
         link: palette.link,
         name: palette.name,
+        palette,
         price: palette.price,
         score: palette.score,
       });
@@ -67,7 +74,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
   }
 
   public render() {
-    const { description, id, link, name, price, score } = this.state;
+    const { changed, description, id, link, name, price, score } = this.state;
 
     const isInvalid = !description || !link || !name || !price || !score;
 
@@ -80,6 +87,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
           submit={id ? this.handleEdit : this.handleAdd}
         >
           <h2 className="paletteForm_title">{ id ? 'Edit Palette' : 'New Palette' }</h2>
+          {(id && !changed) && <h4 className="paletteForm_alert">No change</h4>}
           <div className="paletteForm_row">
             <div className="paletteForm_left">
               <label className="paletteForm_label">
@@ -87,7 +95,6 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
                 <input
                   className="paletteForm_input paletteForm_name"
                   onChange={(e) => this.handleChange(e, 'name')}
-                  // placeholder="Palette"
                   type="text"
                   value={name}
                 />
@@ -96,7 +103,6 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <span className="paletteForm_label-text">Description</span>
                 <textarea
                   className="paletteForm_input paletteForm_description"
-                  // placeholder="Enter a description..."
                   onChange={(e) => this.handleChange(e, 'description')}
                   value={description}
                 />
@@ -112,7 +118,6 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <input
                 className="paletteForm_input"
                 onChange={(e) => this.handleChange(e, 'price')}
-                // placeholder="$"
                 type="number"
                 value={price}
               />
@@ -121,7 +126,6 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <span className="paletteForm_label-text">Link</span>
               <input
                 className="paletteForm_input paletteForm_link"
-                // placeholder="Link to palette"
                 onChange={(e) => this.handleChange(e, 'link')}
                 type="text"
                 value={link}
@@ -132,7 +136,6 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <input
                 className="paletteForm_input"
                 onChange={(e) => this.handleChange(e, 'score')}
-                // placeholder="Score"
                 type="number"
                 value={score}
               />
@@ -149,33 +152,40 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
     } as Pick<PaletteFormState, keyof PaletteFormState>);
   }
 
-  // private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   // const { description, image, link, name, price, score } = this.state;
-  //   // const { history } = this.props;
-
-  //   event.preventDefault();
-  //   // auth.doSignInWithEmailAndPassword(email, password)
-  //   // .then(() => {
-  //   //   this.setState({
-  //   //     email: '',
-  //   //     error: null,
-  //   //     password: '',
-  //   //   });
-  //   //   history.push('/admin');
-  //   // })
-  //   // .catch((error: any) => {
-  //   //   this.setState({ error });
-  //   // });
-  // }
-
   private handleAdd = (event: React.FormEvent<HTMLFormElement>) => {
+    const { description, link, name, price, score } = this.state;
+    const { history } = this.props;
     event.preventDefault();
-    console.log('Add');
+    const newPalette: Palette = {
+      description,
+      link,
+      name,
+      price,
+      score
+    }
+    requests.palettes.createPalette(newPalette);
+    history.push('/admin');
   }
 
   private handleEdit = (event: React.FormEvent<HTMLFormElement>) => {
+    const { description, id, link, name, palette, price, score } = this.state;
+    const { history } = this.props;
     event.preventDefault();
-    console.log('Edit', this.state.id);
+    const updatedPalette: Palette = {
+      description,
+      link,
+      name,
+      price,
+      score
+    }
+    if (JSON.stringify(palette) !== JSON.stringify(updatedPalette)) {
+      requests.palettes.updatePalette(id, updatedPalette);
+      history.push('/admin');
+    } else {
+      this.setState({
+        changed: false
+      })
+    }
   }
 }
 
@@ -184,6 +194,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({ dispatch });
 
 const mapStateToProps = (state: ApplicationState) => ({
+  palettes: state.palettesState.palettes,
   router: state.router
 });
 

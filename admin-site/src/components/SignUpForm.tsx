@@ -108,7 +108,7 @@ class DisconnectedSignUpForm extends React.Component<SignUpMergedProps, SignUpFo
         email,
         firstName: names[0],
         id: user.user.uid,
-        lastName: names[1],
+        lastName: names[names.length - 1],
       };
       // Create a user in database
       await db.requests.users.createUser(currentUser, dispatch);

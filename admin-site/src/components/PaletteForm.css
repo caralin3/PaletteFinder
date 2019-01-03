@@ -11,6 +11,12 @@
   padding-bottom: 1rem;
 }
 
+.paletteForm_alert {
+  color: red;
+  margin: 0;
+  padding: 0.5rem 1rem;
+}
+
 .paletteForm_form {
   align-items: center;
   display: flex;

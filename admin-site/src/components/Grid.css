@@ -8,6 +8,7 @@
 .grid_item {
   align-items: center;
   display: flex;
+  justify-content: center;
   height: 10rem;
   line-height: 1.5;
   padding: 0 0.5rem;
