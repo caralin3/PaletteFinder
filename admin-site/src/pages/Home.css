@@ -1,5 +1,6 @@
-.home {
-
+.home_content {
+  display: flex;
+  flex-direction: column;
 }
 
 .home_header {

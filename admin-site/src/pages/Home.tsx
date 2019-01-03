@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 import { Dispatch } from 'redux';
 import { withAuthorization } from '../auth/withAuthorization';
-import { Header } from '../components';
+import { Grid, Header } from '../components';
+import { palettes } from '../db';
 import { ApplicationState } from '../store';
 import { User } from '../types';
 import './Home.css';
@@ -35,9 +36,12 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
     return (
       <div className="home">
         <Header />
-        <div className="home_header">
-          <span className="home_title">Palettes</span>
-          <Link className="home_add" to="/admin/add">+</Link>
+        <div className="home_content">
+          <div className="home_header">
+            <span className="home_title">Palettes</span>
+            <Link className="home_add" to="/admin/add">+</Link>
+          </div>
+          <Grid palettes={palettes} />
         </div>
       </div>
     )

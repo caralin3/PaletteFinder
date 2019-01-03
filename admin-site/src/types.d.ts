@@ -9,3 +9,13 @@ export interface User {
   firstName: string;
   lastName: string;
 }
+
+export interface Palette {
+  description: string;
+  id: string;
+  // image: string;
+  link: string;
+  name: string;
+  price: number;
+  score: number;
+}
