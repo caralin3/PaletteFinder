@@ -15,9 +15,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import { sessionState } from './index';
+import { palettesState, sessionState } from './index';
 
 export interface ApplicationState {
+  palettesState: palettesState.PalettesState,
   router: RouterState;
   sessionState: sessionState.SessionState,
 }
@@ -33,11 +34,13 @@ export default (history: History.History): Store<ApplicationState> => {
   );
 
   const rootReducer = combineReducers<ApplicationState>({
+    palettesState: palettesState.reducer,
     router: connectRouter(history),
     sessionState: sessionState.reducer,
   });
 
   const persistConfig = {
+    blacklist: [],
     key: 'root',
     storage,
   };

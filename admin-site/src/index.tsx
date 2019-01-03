@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
+import { persistStore } from 'redux-persist';
 import { App } from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
@@ -9,6 +10,7 @@ import { createHistory } from './routes';
 import { ApplicationState, createStore } from './store';
 
 const store: Store<ApplicationState> = createStore(createHistory());
+persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
