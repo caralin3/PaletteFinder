@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { compose } from 'recompose';
 import { Dispatch } from 'redux';
-import { withAuthorization } from '../auth/withAuthorization';
+import { palettes } from '../db';
 import { ApplicationState } from '../store';
 import { Form } from './';
 import './PaletteForm.css';
@@ -19,14 +19,19 @@ interface StateMappedProps {
   router: RouterState;
 }
 
+export interface RouteParams {
+  id: string;
+}
+
 interface PaletteFormMergedProps extends
-  RouteComponentProps,
+  RouteComponentProps<RouteParams>,
   StateMappedProps,
   DispatchMappedProps,
   PaletteFormProps {}
 
 export interface PaletteFormState {
   description: string;
+  id: string;
   image: string;
   link: string;
   name: string;
@@ -37,6 +42,7 @@ export interface PaletteFormState {
 class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, PaletteFormState> {
   public readonly state: PaletteFormState = {
     description: '',
+    id: '',
     image: '',
     link: '',
     name: '',
@@ -44,22 +50,36 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
     score: 0,
   }
 
+  public componentWillMount() {
+    const id = this.props.match.params.id;
+    const palette = palettes[id];
+    if (id) {
+      this.setState({
+        description: palette.description,
+        id,
+        // image: '',
+        link: palette.link,
+        name: palette.name,
+        price: palette.price,
+        score: palette.score,
+      });
+    }
+  }
+
   public render() {
-    const { description, link, name, price, score } = this.state;
+    const { description, id, link, name, price, score } = this.state;
 
     const isInvalid = !description || !link || !name || !price || !score;
-
-    const edit: boolean = this.props.router.location.pathname === '/admin/edit';
 
     return (
       <div className="paletteForm">
         <Form
           className="paletteForm_form"
-          buttonText={edit ? 'Update' : 'Add'}
+          buttonText={id ? 'Update' : 'Add'}
           disabled={isInvalid}
-          submit={this.handleSubmit}
+          submit={id ? this.handleEdit : this.handleAdd}
         >
-          <h2 className="paletteForm_title">{ edit? 'Edit Palette' : 'New Palette' }</h2>
+          <h2 className="paletteForm_title">{ id ? 'Edit Palette' : 'New Palette' }</h2>
           <div className="paletteForm_row">
             <div className="paletteForm_left">
               <label className="paletteForm_label">
@@ -67,7 +87,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
                 <input
                   className="paletteForm_input paletteForm_name"
                   onChange={(e) => this.handleChange(e, 'name')}
-                  placeholder="Palette"
+                  // placeholder="Palette"
                   type="text"
                   value={name}
                 />
@@ -76,7 +96,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <span className="paletteForm_label-text">Description</span>
                 <textarea
                   className="paletteForm_input paletteForm_description"
-                  placeholder="Enter a description..."
+                  // placeholder="Enter a description..."
                   onChange={(e) => this.handleChange(e, 'description')}
                   value={description}
                 />
@@ -92,7 +112,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <input
                 className="paletteForm_input"
                 onChange={(e) => this.handleChange(e, 'price')}
-                placeholder="$"
+                // placeholder="$"
                 type="number"
                 value={price}
               />
@@ -101,7 +121,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <span className="paletteForm_label-text">Link</span>
               <input
                 className="paletteForm_input paletteForm_link"
-                placeholder="Link to palette"
+                // placeholder="Link to palette"
                 onChange={(e) => this.handleChange(e, 'link')}
                 type="text"
                 value={link}
@@ -112,7 +132,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               <input
                 className="paletteForm_input"
                 onChange={(e) => this.handleChange(e, 'score')}
-                placeholder="Score"
+                // placeholder="Score"
                 type="number"
                 value={score}
               />
@@ -129,27 +149,37 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
     } as Pick<PaletteFormState, keyof PaletteFormState>);
   }
 
-  private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    // const { description, image, link, name, price, score } = this.state;
-    // const { history } = this.props;
+  // private handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   // const { description, image, link, name, price, score } = this.state;
+  //   // const { history } = this.props;
 
+  //   event.preventDefault();
+  //   // auth.doSignInWithEmailAndPassword(email, password)
+  //   // .then(() => {
+  //   //   this.setState({
+  //   //     email: '',
+  //   //     error: null,
+  //   //     password: '',
+  //   //   });
+  //   //   history.push('/admin');
+  //   // })
+  //   // .catch((error: any) => {
+  //   //   this.setState({ error });
+  //   // });
+  // }
+
+  private handleAdd = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // auth.doSignInWithEmailAndPassword(email, password)
-    // .then(() => {
-    //   this.setState({
-    //     email: '',
-    //     error: null,
-    //     password: '',
-    //   });
-    //   history.push('/admin');
-    // })
-    // .catch((error: any) => {
-    //   this.setState({ error });
-    // });
+    console.log('Add');
+  }
+
+  private handleEdit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    console.log('Edit', this.state.id);
   }
 }
 
-const authCondition = (authUser: any) => !!authUser;
+// const authCondition = (authUser: any) => !!authUser;
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({ dispatch });
 
@@ -159,6 +189,5 @@ const mapStateToProps = (state: ApplicationState) => ({
 
 export const PaletteForm = compose(
   withRouter,
-  withAuthorization(authCondition),
   connect(mapStateToProps, mapDispatchToProps)
 )(DisconnectedPaletteForm);

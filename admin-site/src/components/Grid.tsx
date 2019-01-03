@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Palette } from '../types';
+import { Palettes } from '../types';
 import './Grid.css';
 
 export interface GridProps {
-  palettes: Palette[];
+  palettes: Palettes;
 }
 
 export interface GridPageState {}
@@ -14,15 +14,16 @@ export class Grid extends React.Component<GridProps, GridPageState> {
 
   public render() {
     const { palettes } = this.props;
+
     return (
       <ul className="grid_items">
-        {palettes.map((palette: Palette) => 
-          <li className="grid_item" key={palette.id}>
-            <Link className="grid_item-link" to={`/admin/edit/${palette.id}`}>
-              <h3 className="grid_item-name">{ this.trim(palette.name) }</h3>
+        {Object.keys(palettes).map((key) => (
+          <li className="grid_item" key={key}>
+            <Link className="grid_item-link" to={`/admin/edit/${key}`}>
+              <h3 className="grid_item-name">{ this.trim(palettes[key].name) }</h3>
             </Link>
           </li>
-        )}
+        ))}
       </ul>
     )
   }

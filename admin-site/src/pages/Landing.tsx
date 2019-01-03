@@ -1,16 +1,37 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { RouteComponentProps, withRouter } from 'react-router';
+import { compose } from 'recompose';
 import { LoginForm, SignUpForm } from '../components';
+import { ApplicationState } from '../store';
+import { User } from '../types';
 import './Landing.css';
 
 interface LandingPageProps {}
+
+interface StateMappedProps {
+  currentUser: User | null;
+}
+
+interface LandingMergedProps extends
+  RouteComponentProps,
+  StateMappedProps,
+  LandingPageProps {}
 
 interface LandingPageState {
   login: boolean;
 }
 
-export class LandingPage extends React.Component<LandingPageProps, LandingPageState> {
+export class DisconnectedLandingPage extends React.Component<LandingMergedProps, LandingPageState> {
   public readonly state: LandingPageState = {
     login: true
+  }
+
+  public componentWillReceiveProps(nextProps: LandingMergedProps) {
+    const { currentUser, history } = nextProps;
+    if (currentUser) {
+      history.push('/admin');
+    }
   }
 
   public render() {
@@ -25,3 +46,12 @@ export class LandingPage extends React.Component<LandingPageProps, LandingPageSt
     )
   }
 }
+
+const mapStateToProps = (state: ApplicationState) => ({
+  currentUser: state.sessionState.currentUser,
+});
+
+export const LandingPage = compose(
+  withRouter,
+  connect(mapStateToProps)
+)(DisconnectedLandingPage);

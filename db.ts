@@ -1,202 +1,179 @@
-export const palettes = [
+export const palettes = 
   {
-    "id": "1",
-    "score": 6,
-    "name": "Urban Decay Born to Run Eyeshadow Palette",
-    "description": "The perfect palette for all types of occasions.",
-    "price": 49,
-    "link": "https://www.sephora.com/product/born-to-run-eyeshadow-palette-P431748?icid2=products%20grid:p431748:product"
-  },
-  {
-    "id": "2",
-    "score": 9,
-    "name": "Tarte Tarteist PRO Amazonian Clay Palette",
-    "description": "This palette has some of the prettiest shades ever!",
-    "price": 49,
-    "link": "https://www.sephora.com/product/tarteist-pro-amazonian-clay-palette-P413177?icid2=products%20grid:p413177:product"
-  },
-  {
-    "id": "3",
-    "score": 12,
-    "name": "Jeffree Star Cosmetics Thirsty Palette",
-    "description": "A palette with fun pops of color and plenty of spunk.",
-    "price": 48,
-    "link": "https://jeffreestarcosmetics.com/collections/eyes/products/thirsty-palette"
-  },
-  {
-    "id": "4",
-    "score": 15,
-    "name": "Morphe The James Charles Palette",
-    "description": "Large and in charge, this palette has any color you would ever need.",
-    "price": 39,
-    "link": "https://www.ulta.com/james-charles-palette?productId=pimprod2001848"
-  },
-  {
-    "id": "5",
-    "score": 18,
-    "name": "Morphe Jaclyn Hill Eyeshadow Palette",
-    "description": "One word comes to mind�OBSESSED!!!",
-    "price": 38,
-    "link": "https://www.ulta.com/jaclyn-hill-eyeshadow-palette?productId=xlsImpprod17081131"
-  },
-  {
-    "id": "6",
-    "score": 21,
-    "name": "Huda Beauty Obsessions Eyeshadow Palette in Amethyst",
-    "description": "A gorgeous palette for the ultimate purple fantasy.",
-    "price": 27,
-    "link": "https://www.sephora.com/product/obsessions-gemstone-eyeshadow-palette-P45188659?icid2=products%20grid:p45188659:product&skuId=2137271"
-  },
-  {
-    "id": "7",
-    "score": 24,
-    "name": "BH Cosmetics Aurora Lights",
-    "description": "A fun palette to brighten up your day that lets you shine.",
-    "price": 18,
-    "link": "https://www.ulta.com/aurora-lights-18-color-baked-eyeshadow-palette?productId=xlsImpprod18771165"
-  },
-  {
-    "id": "8",
-    "score": 27,
-    "name": "Makeup Revolution Reloaded Palette Division",
-    "description": "A palette with beautiful colors for a girl on a budget.",
-    "price": 7,
-    "link": "https://www.ulta.com/reloaded-palette?productId=xlsImpprod17681065"
-  },
-  {
-    "id": "9",
-    "score": 30,
-    "name": "Huda Beauty The New Nude Palette",
-    "description": "A beautiful palette to create both everyday looks and some serious red carpet glam.",
-    "price": 65,
-    "link": "https://www.sephora.com/product/the-new-nude-eyeshadow-palette-P43818047"
-  },
-  {
-    "id": "10",
-    "score": 33,
-    "name": "Too Faced Chocolate Gold Eyeshadow Palette",
-    "description": "A palette with enough shimmers to get you noticed.",
-    "price": 49,
-    "link": "https://www.sephora.com/product/chocolate-gold-eyeshadow-palette-P426848?icid2=products%20grid:p426848:product"
-  },
-  {
-    "id": "11",
-    "score": 36,
-    "name": "Urban Decay Naked Cherry Eyeshadow Palette",
-    "description": "It looks good enough to eat! Want to take a bite?",
-    "price": 49,
-    "link": "https://www.ulta.com/naked-cherry-eyeshadow-palette?productId=pimprod2000806"
-  },
-  {
-    "id": "12",
-    "score": 39,
-    "name": "Violet Voss Like a Boss Pro Eyeshadow Palette",
-    "description": "The perfect palette to create any number of looks that are either simple or sassy.",
-    "price": 45,
-    "link": "https://www.sephora.com/product/like-boss-palette-P429925?icid2=products%20grid:p429925:product"
-  },
-  {
-    "id": "13",
-    "score": 42,
-    "name": "Anastasia Beverly Hills Sultry Palette",
-    "description": "A palette that lives up to its name, with gorgeous metallics and blendable mattes.",
-    "price": 45,
-    "link": "https://www.ulta.com/sultry-eyeshadow-palette?productId=pimprod2000871"
-  },
-  {
-    "id": "14",
-    "score": 45,
-    "name": "Anastasia Beverly Hills Soft Glam Eyeshadow Palette",
-    "description": "Perfect to achieve your everyday glam looks!",
-    "price": 42,
-    "link": "https://www.ulta.com/soft-glam-eyeshadow-palette?productId=xlsImpprod17841007"
-  },
-  {
-    "id": "15",
-    "score": 48,
-    "name": "Morphe 35F Fall into Frost Eyeshadow Palette",
-    "description": "From natural to dramatic smoky looks, this palette is a great addition to anyone's makeup collection.",
-    "price": 24,
-    "link": "https://www.ulta.com/35f-fall-into-frost-eyeshadow-palette?productId=xlsImpprod17081135"
-  },
-  {
-    "id": "16",
-    "score": 51,
-    "name": "Too Faced Sweet Peach Eyeshadow Palette",
-    "description": "A palette with some of the prettiest neutral shades around!",
-    "price": 49,
-    "link": "https://www.ulta.com/sweet-peach-eyeshadow-palette?productId=xlsImpprod13941029"
-  },
-  {
-    "id": "17",
-    "score": 54,
-    "name": "Kat Von D Shade + Light Eye Contour Palette",
-    "description": "A must-have matte palette that lets you bring dimension to any eye look.",
-    "price": 48,
-    "link": "https://www.sephora.com/product/shade-light-eye-contour-palette-P413457?icid2=products%20grid:p413457:product"
-  },
-  {
-    "id": "18",
-    "score": 57,
-    "name": "Tartelette 2 In Bloom Clay Eyeshadow Palette",
-    "description": "A great palette to create the most beautiful, classic looks.",
-    "price": 39,
-    "link": "https://www.ulta.com/tartelette-2-in-bloom-clay-eyeshadow-palette?productId=xlsImpprod13281007"
-  },
-  {
-    "id": "19",
-    "score": 60,
-    "name": "Smashbox + Vlada Cover Shot: Petal Metal Eye Shadow",
-    "description": "An adorable palette with beautiful rose gold hues.",
-    "price": 29,
-    "link": "https://www.ulta.com/smashbox-vlada-cover-shot-petal-metal-eyeshadow-palette?productId=xlsImpprod18121009"
-  },
-  {
-    "id": "20",
-    "score": 63,
-    "name": "ColourPop Fame Pressed Powder Eyeshadow Palette",
-    "description": "A fun palette for those cool-toned queens.",
-    "price": 22,
-    "link": "https://www.ulta.com/fame-pressed-powder-eyeshadow-palette?productId=xlsImpprod18951011&sku=2535053&_requestid=5236933"
-  },
-  {
-    "id": "21",
-    "score": 66,
-    "name": "Juvia's Place The Warrior Eyeshadow Palette",
-    "description": "A beautiful neutral palette with shimmery kick.",
-    "price": 20,
-    "link": "https://www.ulta.com/warrior-eyeshadow-palette?productId=xlsImpprod18771145"
-  },
-  {
-    "id": "22",
-    "score": 69,
-    "name": "Tartelette Flirt Eyeshadow Palette",
-    "description": "A cute little palette you can take anywhere!",
-    "price": 19,
-    "link": "https://www.sephora.com/product/tartlette-flirt-eyeshadow-palette-P424438?icid2=products%20grid:p424438:product"
-  },
-  {
-    "id": "23",
-    "score": 72,
-    "name": "NYX Warm Neutrals Ultimate Shadow Palette",
-    "description": "A cute palette for everyday looks.",
-    "price": 18,
-    "link": "https://www.ulta.com/warm-neutrals-ultimate-shadow-palette?productId=xlsImpprod13901019"
-  },
-  {
-    "id": "24",
-    "score": 75,
-    "name": "Flower Beauty Shimmer and Shade Eyeshadow Palette Golden Natural",
-    "description": "A great drugstore find to keep you looking elegant.",
-    "price": 16.99,
-    "link": "https://www.ulta.com/shimmer-shade-eyeshadow-palette?productId=xlsImpprod17631409"
-  },
-  {
-    "id": "25",
-    "score": 78,
-    "name": "ColourPop Brown Sugar Pressed Powder Shadow Palette",
-    "description": "A palette that is as sweet as its name.",
-    "price": 12,
-    "link": "https://colourpop.com/products/brown-sugar"
+  "1": {
+      "description": "The perfect palette for all types of occasions.",
+      "link": "https://www.sephora.com/product/born-to-run-eyeshadow-palette-P431748?icid2=products%20grid:p431748:product",
+      "name": "Urban Decay Born to Run Eyeshadow Palette",
+      "price": 49,
+      "score": 6,
+    },
+    "10": {
+      "description": "A palette with enough shimmers to get you noticed.",
+      "link": "https://www.sephora.com/product/chocolate-gold-eyeshadow-palette-P426848?icid2=products%20grid:p426848:product",
+      "name": "Too Faced Chocolate Gold Eyeshadow Palette",
+      "price": 49,
+      "score": 33,
+    },
+    "11": {
+      "description": "It looks good enough to eat! Want to take a bite?",
+      "link": "https://www.ulta.com/naked-cherry-eyeshadow-palette?productId=pimprod2000806",
+      "name": "Urban Decay Naked Cherry Eyeshadow Palette",
+      "price": 49,
+      "score": 36,
+    },
+    "12": {
+      "description": "The perfect palette to create any number of looks that are either simple or sassy.",
+      "link": "https://www.sephora.com/product/like-boss-palette-P429925?icid2=products%20grid:p429925:product",
+      "name": "Violet Voss Like a Boss Pro Eyeshadow Palette",
+      "price": 45,
+      "score": 39,
+    },
+    "13": {
+      "description": "A palette that lives up to its name, with gorgeous metallics and blendable mattes.",
+      "link": "https://www.ulta.com/sultry-eyeshadow-palette?productId=pimprod2000871",
+      "name": "Anastasia Beverly Hills Sultry Palette",
+      "price": 45,
+      "score": 42,
+    },
+    "14": {
+      "description": "Perfect to achieve your everyday glam looks!",
+      "link": "https://www.ulta.com/soft-glam-eyeshadow-palette?productId=xlsImpprod17841007",
+      "name": "Anastasia Beverly Hills Soft Glam Eyeshadow Palette",
+      "price": 42,
+      "score": 45,
+    },
+    "15": {
+      "description": "From natural to dramatic smoky looks, this palette is a great addition to anyone's makeup collection.",
+      "link": "https://www.ulta.com/35f-fall-into-frost-eyeshadow-palette?productId=xlsImpprod17081135",
+      "name": "Morphe 35F Fall into Frost Eyeshadow Palette",
+      "price": 24,
+      "score": 48,
+    },
+    "16": {
+      "description": "A palette with some of the prettiest neutral shades around!",
+      "link": "https://www.ulta.com/sweet-peach-eyeshadow-palette?productId=xlsImpprod13941029",
+      "name": "Too Faced Sweet Peach Eyeshadow Palette",
+      "price": 49,
+      "score": 51,
+    },
+    "17": {
+      "description": "A must-have matte palette that lets you bring dimension to any eye look.",
+      "link": "https://www.sephora.com/product/shade-light-eye-contour-palette-P413457?icid2=products%20grid:p413457:product",
+      "name": "Kat Von D Shade + Light Eye Contour Palette",
+      "price": 48,
+      "score": 54,
+    },
+    "18": {
+      "description": "A great palette to create the most beautiful, classic looks.",
+      "link": "https://www.ulta.com/tartelette-2-in-bloom-clay-eyeshadow-palette?productId=xlsImpprod13281007",
+      "name": "Tartelette 2 In Bloom Clay Eyeshadow Palette",
+      "price": 39,
+      "score": 57,
+    },
+    "19": {
+      "description": "An adorable palette with beautiful rose gold hues.",
+      "link": "https://www.ulta.com/smashbox-vlada-cover-shot-petal-metal-eyeshadow-palette?productId=xlsImpprod18121009",
+      "name": "Smashbox + Vlada Cover Shot: Petal Metal Eye Shadow",
+      "price": 29,
+      "score": 60,
+    },
+    "2": {
+      "description": "This palette has some of the prettiest shades ever!",
+      "link": "https://www.sephora.com/product/tarteist-pro-amazonian-clay-palette-P413177?icid2=products%20grid:p413177:product",
+      "name": "Tarte Tarteist PRO Amazonian Clay Palette",
+      "price": 49,
+      "score": 9,
+    },
+    "20": {
+      "description": "A fun palette for those cool-toned queens.",
+      "link": "https://www.ulta.com/fame-pressed-powder-eyeshadow-palette?productId=xlsImpprod18951011&sku=2535053&_requestid=5236933",
+      "name": "ColourPop Fame Pressed Powder Eyeshadow Palette",
+      "price": 22,
+      "score": 63,
+    },
+    "21": {
+      "description": "A beautiful neutral palette with shimmery kick.",
+      "link": "https://www.ulta.com/warrior-eyeshadow-palette?productId=xlsImpprod18771145",
+      "name": "Juvia's Place The Warrior Eyeshadow Palette",
+      "price": 20,
+      "score": 66,
+    },
+    "22": {
+      "description": "A cute little palette you can take anywhere!",
+      "link": "https://www.sephora.com/product/tartlette-flirt-eyeshadow-palette-P424438?icid2=products%20grid:p424438:product",
+      "name": "Tartelette Flirt Eyeshadow Palette",
+      "price": 19,
+      "score": 69,
+    },
+    "23": {
+      "description": "A cute palette for everyday looks.",
+      "link": "https://www.ulta.com/warm-neutrals-ultimate-shadow-palette?productId=xlsImpprod13901019",
+      "name": "NYX Warm Neutrals Ultimate Shadow Palette",
+      "price": 18,
+      "score": 72,
+    },
+    "24": {
+      "description": "A great drugstore find to keep you looking elegant.",
+      "link": "https://www.ulta.com/shimmer-shade-eyeshadow-palette?productId=xlsImpprod17631409",
+      "name": "Flower Beauty Shimmer and Shade Eyeshadow Palette Golden Natural",
+      "price": 16.99,
+      "score": 75,
+    },
+    "25": {
+      "description": "A palette that is as sweet as its name.",
+      "link": "https://colourpop.com/products/brown-sugar",
+      "name": "ColourPop Brown Sugar Pressed Powder Shadow Palette",
+      "price": 12,
+      "score": 78,
+    },
+    "3": {
+      "description": "A palette with fun pops of color and plenty of spunk.",
+      "link": "https://jeffreestarcosmetics.com/collections/eyes/products/thirsty-palette",
+      "name": "Jeffree Star Cosmetics Thirsty Palette",
+      "price": 48,
+      "score": 12,
+    },
+    "4": {
+      "description": "Large and in charge, this palette has any color you would ever need.",
+      "link": "https://www.ulta.com/james-charles-palette?productId=pimprod2001848",
+      "name": "Morphe The James Charles Palette",
+      "price": 39,
+      "score": 15,
+    },
+    "5": {
+      "description": "One word comes to mind OBSESSED!!!",
+      "link": "https://www.ulta.com/jaclyn-hill-eyeshadow-palette?productId=xlsImpprod17081131",
+      "name": "Morphe Jaclyn Hill Eyeshadow Palette",
+      "price": 38,
+      "score": 18,
+    },
+    "6": {
+      "description": "A gorgeous palette for the ultimate purple fantasy.",
+      "link": "https://www.sephora.com/product/obsessions-gemstone-eyeshadow-palette-P45188659?icid2=products%20grid:p45188659:product&skuId=2137271",
+      "name": "Huda Beauty Obsessions Eyeshadow Palette in Amethyst",
+      "price": 27,
+      "score": 21,
+    },
+    "7": {
+      "description": "A fun palette to brighten up your day that lets you shine.",
+      "link": "https://www.ulta.com/aurora-lights-18-color-baked-eyeshadow-palette?productId=xlsImpprod18771165",
+      "name": "BH Cosmetics Aurora Lights",
+      "price": 18,
+      "score": 24,
+    },
+    "8": {
+      "description": "A palette with beautiful colors for a girl on a budget.",
+      "link": "https://www.ulta.com/reloaded-palette?productId=xlsImpprod17681065",
+      "name": "Makeup Revolution Reloaded Palette Division",
+      "price": 7,
+      "score": 27,
+    },
+    "9": {
+      "description": "A beautiful palette to create both everyday looks and some serious red carpet glam.",
+      "link": "https://www.sephora.com/product/the-new-nude-eyeshadow-palette-P43818047",
+      "name": "Huda Beauty The New Nude Palette",
+      "price": 65,
+      "score": 30,
+    },
   }
-]
+   

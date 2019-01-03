@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { auth } from '../firebase';
 import './Header.css';
 
@@ -12,7 +13,9 @@ export class Header extends React.Component<HeaderProps, HeaderPageState> {
   public render() {
     return (
       <div className="header">
-        <h1 className="header_title">Eyeshadow Palette Finder Admin</h1>
+        <Link className="header_link" to="/admin">
+          <h1 className="header_title">Eyeshadow Palette Finder Admin</h1>
+        </Link>
         <span className="header_cta" onClick={() => auth.doSignOut()}>Logout</span>
       </div>
     )
