@@ -45,7 +45,18 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
         <div className="home_content">
           <div className="home_header">
             <h2 className="home_title">Eyeshadow Palettes</h2>
-            <Link className="home_add" to="/admin/add">+</Link>
+            <div>
+              <Link to="/admin/add">
+                <span className="home_add fa-stack fa-2x">
+                  <i className="home_circle fas fa-circle fa-stack-2x" />
+                  <i className="home_plus fas fa-plus fa-stack-1x" />
+                </span>
+              </Link>
+              <span className="home_add fa-stack fa-2x">
+                <i className="home_circle fas fa-circle fa-stack-2x" />
+                <i className="home_minus fas fa-minus fa-stack-1x" />
+              </span>
+            </div>
           </div>
           {!!palettes ? <Grid palettes={palettes} /> : 
             <div className="home_empty">

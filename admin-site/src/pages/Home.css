@@ -21,15 +21,13 @@
   font-size: 20px;
 }
 
-.home_add {
-  background-color: rgb(252, 97, 2);
-  border-radius: 50%;
+.home_circle {
+  color: rgb(252, 97, 2);
+}
+
+.home_plus,
+.home_minus {
   color: #fff;
-  font-size: 20px;
-  height: 25px;
-  padding: 0.5rem;
-  text-align: center;
-  width: 25px;
 }
 
 .home_add:focus,
