@@ -27,10 +27,14 @@ interface HomeMergedProps extends
   DispatchMappedProps,
   HomePageProps {}
 
-export interface HomePageState {}
+export interface HomePageState {
+  deleting: boolean;
+}
 
 class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageState> {
-  public readonly state: HomePageState = {}
+  public readonly state: HomePageState = {
+    deleting: false
+  }
 
   public componentWillMount() {
     this.loadPalettes();
@@ -38,6 +42,7 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
 
   public render() {
     const { palettes } = this.props;
+    const { deleting } = this.state;
 
     return (
       <div className="home">
@@ -47,18 +52,18 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
             <h2 className="home_title">Eyeshadow Palettes</h2>
             <div>
               <Link to="/admin/add">
-                <span className="home_add fa-stack fa-2x">
+                <span className="home_button fa-stack fa-2x">
                   <i className="home_circle fas fa-circle fa-stack-2x" />
                   <i className="home_plus fas fa-plus fa-stack-1x" />
                 </span>
               </Link>
-              <span className="home_add fa-stack fa-2x">
+              <span className="home_button fa-stack fa-2x" onClick={this.toggleDelete}>
                 <i className="home_circle fas fa-circle fa-stack-2x" />
-                <i className="home_minus fas fa-minus fa-stack-1x" />
+                <i className="home_del fas fa-trash-alt fa-stack-1x" />
               </span>
             </div>
           </div>
-          {!!palettes ? <Grid palettes={palettes} /> : 
+          {!!palettes ? <Grid palettes={palettes} deleting={deleting} /> : 
             <div className="home_empty">
               <h3>You haven't added any eyeshadow palettes yet.</h3>
             </div>
@@ -72,6 +77,8 @@ class DisconnectedHomePage extends React.Component<HomeMergedProps, HomePageStat
     const { dispatch } = this.props;
     await requests.palettes.getAllPalettes(dispatch);
   }
+
+  private toggleDelete = () => this.setState({ deleting: !this.state.deleting });
 }
 
 const authCondition = (authUser: any) => !!authUser;

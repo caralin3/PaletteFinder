@@ -21,12 +21,21 @@
   font-size: 20px;
 }
 
+.home_button {
+  font-size: 18px !important;
+  padding-left: 1rem;
+}
+
+.home_button:hover {
+  cursor: pointer !important;
+}
+
 .home_circle {
   color: rgb(252, 97, 2);
 }
 
 .home_plus,
-.home_minus {
+.home_del {
   color: #fff;
 }
 

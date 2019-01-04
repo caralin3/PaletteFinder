@@ -34,3 +34,10 @@ export const updatePalette = (id: string, palette: Palette) => {
     console.log('Updated', palette);
   });
 }
+
+// DELETE
+export const deletePalette = (id: string) => {
+  db.ref(`/palettes/${id}`).remove().then(() => {
+    console.log('Deleted', id);
+  });
+}
