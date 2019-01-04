@@ -7,7 +7,7 @@ import { Dispatch } from 'redux';
 import { requests } from '../firebase/db';
 import { ApplicationState } from '../store';
 import { Palette, Palettes } from '../types';
-import { Form } from './';
+import { Form, ImageUpload } from './';
 import './PaletteForm.css';
 
 export interface PaletteFormProps {}
@@ -109,7 +109,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               </label>
             </div>
             <div className="paletteForm_imageUpload">
-              Image
+              <ImageUpload onUpload={this.handleImage} />
             </div>
           </div>
           <div className="paletteForm_inputs">
@@ -150,6 +150,10 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
     this.setState({
       [propertyName]: event.target.value as any,
     } as Pick<PaletteFormState, keyof PaletteFormState>);
+  }
+
+  private handleImage = (file: File) => {
+    console.log(file.name);
   }
 
   private handleAdd = (event: React.FormEvent<HTMLFormElement>) => {

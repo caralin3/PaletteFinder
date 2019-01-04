@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firebase-database';
+import 'firebase/storage';
 import { devConfig, prodConfig } from './config';
 
 const config = process.env.NODE_ENV === 'development'
@@ -12,6 +13,7 @@ if (!firebase.apps.length) {
 
 export const auth = firebase.auth();
 export const db = firebase.database();
+export const storage = firebase.storage();
 export const currentUser = auth.currentUser;
 
 // date issue fix according to firebase

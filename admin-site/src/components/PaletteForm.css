@@ -74,27 +74,13 @@
   padding: 1rem 0 0.5rem;
 }
 
-.paletteForm_imageUpload {
-  background-color: #ddd;
-  color: #000;
-  height: 250px;
-  text-align: center;
-  width: 250px;
-}
-
 @media only screen and (max-width: 800px) {
   .paletteForm_form {
-    width: 35rem;
+    width: 38rem;
   }
 }
 
-@media only screen and (max-width: 700px) {
-  .paletteForm_form {
-    width: 30rem;
-  }
-}
-
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 750px) {
   .paletteForm_form {
     width: 15rem;
   }
