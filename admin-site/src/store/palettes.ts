@@ -12,7 +12,17 @@ export const setPalettes = (palettes: Palettes): SetPalettesAction => ({
   type: SET_PALETTES,
 });
 
-type PalettesActions = SetPalettesAction;
+export interface ResetPalettesAction {
+  type: 'RESET_PALETTES';
+}
+
+export const RESET_PALETTES = 'RESET_PALETTES';
+
+export const resetPalettes = (): ResetPalettesAction => ({
+  type: RESET_PALETTES,
+});
+
+type PalettesActions = ResetPalettesAction | SetPalettesAction;
 
 export interface PalettesState {
   palettes: Palettes | null;
@@ -28,6 +38,12 @@ export const reducer = (state: PalettesState = initialState, action: PalettesAct
       return {
         ...state,
         palettes: action.palettes,
+      }
+    }
+    case RESET_PALETTES: {
+      return {
+        ...state,
+        palettes: null,
       }
     }
     default:

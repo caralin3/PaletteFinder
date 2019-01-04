@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { storage } from '../firebase';
 import { requests } from '../firebase/db';
 import { Palettes } from '../types';
 import './Grid.css';
@@ -36,6 +37,8 @@ export class Grid extends React.Component<GridProps, GridPageState> {
   }
 
   private handleDelete = (key: string) => {
+    const { palettes } = this.props;
+    storage.deleteImage(palettes[key].image.filename);
     requests.palettes.deletePalette(key);
   }
 
