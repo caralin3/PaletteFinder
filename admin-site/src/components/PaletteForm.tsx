@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { compose } from 'recompose';
 import { Dispatch } from 'redux';
+import { storage } from '../firebase';
 import { requests } from '../firebase/db';
 import { ApplicationState } from '../store';
-import { Palette, Palettes } from '../types';
+import { Image, Palette, Palettes } from '../types';
 import { Form, ImageUpload } from './';
 import './PaletteForm.css';
 
@@ -34,8 +35,10 @@ interface PaletteFormMergedProps extends
 export interface PaletteFormState {
   changed: boolean;
   description: string;
+  editImage: boolean;
+  file: File;
   id: string;
-  image: string;
+  image: Image;
   link: string;
   name: string;
   palette: Palette;
@@ -47,8 +50,10 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
   public readonly state: PaletteFormState = {
     changed: true,
     description: '',
+    editImage: false,
+    file: {} as File,
     id: '',
-    image: '',
+    image: {} as Image,
     link: '',
     name: '',
     palette: {} as Palette,
@@ -62,8 +67,9 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
     if (id) {
       this.setState({
         description: palette.description,
+        editImage: true,
         id,
-        // image: '',
+        image: palette.image,
         link: palette.link,
         name: palette.name,
         palette,
@@ -74,7 +80,7 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
   }
 
   public render() {
-    const { changed, description, id, link, name, price, score } = this.state;
+    const { changed, description, editImage, id, image, link, name, price, score } = this.state;
 
     const isInvalid = !description || !link || !name || !price || !score;
 
@@ -109,7 +115,11 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
               </label>
             </div>
             <div className="paletteForm_imageUpload">
-              <ImageUpload onUpload={this.handleImage} />
+              {editImage ?
+                <img className="paletteForm_image" src={image.src} alt={image.palette} onClick={this.toggleEditImage} /> :
+                id ? <ImageUpload onClick={this.toggleEditImage} onUpload={this.handleImage} /> :
+                <ImageUpload onUpload={this.handleImage} />
+              }
             </div>
           </div>
           <div className="paletteForm_inputs">
@@ -146,54 +156,86 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
     )
   }
 
+  private toggleEditImage = () => this.setState({ editImage: !this.state.editImage});
+
   private handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, propertyName: string) => {
     this.setState({
       [propertyName]: event.target.value as any,
     } as Pick<PaletteFormState, keyof PaletteFormState>);
   }
 
-  private handleImage = (file: File) => {
-    console.log(file.name);
-  }
+  private handleImage = (file: File) => this.setState({ file });
 
   private handleAdd = (event: React.FormEvent<HTMLFormElement>) => {
-    const { description, link, name, price, score } = this.state;
+    const { description, file, link, name, price, score } = this.state;
     const { history } = this.props;
     event.preventDefault();
-    const newPalette: Palette = {
-      description,
-      link,
-      name,
-      price,
-      score
-    }
-    requests.palettes.createPalette(newPalette);
+    storage.uploadImage(file, name).then(() => {
+      storage.getImageUrl(file.name).then((url: string) => {
+        const image: Image = {
+          filename: file.name,
+          palette: name,
+          src: url,
+        };
+        const newPalette: Palette = {
+          description,
+          image,
+          link,
+          name,
+          price,
+          score
+        }
+        requests.palettes.createPalette(newPalette);
+      });
+    });    
     history.push('/admin');
   }
 
   private handleEdit = (event: React.FormEvent<HTMLFormElement>) => {
-    const { description, id, link, name, palette, price, score } = this.state;
+    const { description, id, image, file, link, name, palette, price, score } = this.state;
     const { history } = this.props;
     event.preventDefault();
-    const updatedPalette: Palette = {
-      description,
-      link,
-      name,
-      price,
-      score
-    }
-    if (JSON.stringify(palette) !== JSON.stringify(updatedPalette)) {
-      requests.palettes.updatePalette(id, updatedPalette);
+    if (file.name) {
+      storage.deleteImage(image.filename);
+      storage.uploadImage(file, name).then(() => {
+        storage.getImageUrl(file.name).then((url: string) => {
+          const newImage: Image = {
+            filename: file.name,
+            palette: name,
+            src: url,
+          };
+          const updatedPalette: Palette = {
+            description,
+            image: newImage,
+            link,
+            name,
+            price,
+            score
+          }
+          requests.palettes.updatePalette(id, updatedPalette);
+        });
+      });
       history.push('/admin');
     } else {
-      this.setState({
-        changed: false
-      })
+      const updatedPalette: Palette = {
+        description,
+        image,
+        link,
+        name,
+        price,
+        score
+      }
+      if (JSON.stringify(palette) !== JSON.stringify(updatedPalette)) {
+        requests.palettes.updatePalette(id, updatedPalette);
+        history.push('/admin');
+      } else {
+        this.setState({
+          changed: false
+        })
+      }
     }
   }
 }
-
-// const authCondition = (authUser: any) => !!authUser;
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => ({ dispatch });
 

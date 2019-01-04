@@ -1,7 +1,9 @@
 import * as React from 'react';
 import ImageUploader from 'react-images-upload';
+import './ImageUpload.css';
 
 export interface ImageUploadProps {
+  onClick?: () => void;
   onUpload: (file: File) => void;
 }
 
@@ -17,18 +19,21 @@ export class ImageUpload extends React.Component<ImageUploadProps, ImageUploadPa
   public render() {
     const { showIcon } = this.state;
     return (
-      <ImageUploader
-        buttonText='Choose image'
-        buttonStyles={{backgroundColor: '#e90798'}}
-        onChange={this.handleUpload}
-        fileContainerStyle={{height: '200px', width: '250px'}}
-        imgExtension={['.jpg', '.png']}
-        maxFileSize={5242880}
-        singleImage={true}
-        withIcon={showIcon}
-        withLabel={false}
-        withPreview={true}
-      />
+      <div>
+        {this.props.onClick && <i className="upload_close fas fa-times-circle" onClick={this.props.onClick} />}
+        <ImageUploader
+          buttonText='Choose image'
+          buttonStyles={{backgroundColor: '#e90798'}}
+          onChange={this.handleUpload}
+          fileContainerStyle={{height: '200px', width: '250px'}}
+          imgExtension={['.jpg', '.png']}
+          maxFileSize={5242880}
+          singleImage={true}
+          withIcon={showIcon}
+          withLabel={false}
+          withPreview={true}
+        />
+      </div>
     )
   }
 

@@ -1,12 +1,14 @@
 import { storage } from './fb';
 
-export const uploadImage = (filename: string) => {
-  // The storage path
-  const path = `images/${filename}_${new Date().getTime()}`;
-  // Totally optional metadata
-  const customMetadata = { uploadedOn: new Date().toISOString() };
-  const bucket = storage.ref('/images/');
-  bucket.put(filename).then((snapshot) => {
-    console.log('Uploaded', snapshot.ref.getDownloadURL);
-  });
+export const uploadImage = (file: File, palette: string) => {
+  const metadata = { palette };
+  return storage.ref(`images/${file.name}`).put(file, metadata as any);
+}
+
+export const getImageUrl = (filename: string) => {
+  return storage.ref(`images/${filename}`).getDownloadURL();
+}
+
+export const deleteImage = (filename: string) => {
+  return storage.ref(`images/${filename}`).delete();
 }
