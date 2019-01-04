@@ -24,6 +24,7 @@
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
+    "deploy": "yarn run build && firebase deploy",
     "test": "jest",
     "eject": "react-scripts-ts eject"
   },

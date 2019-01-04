@@ -22,9 +22,12 @@ export const doPasswordReset = (email: string) => (
 
 // Password Change
 export const doPasswordUpdate = async (password: string) => {
+  const dev = process.env.NODE_ENV === 'development';
   if (auth.currentUser) {
     await auth.currentUser.updatePassword(password);
-    console.log('Password changed successfully');
+    if (dev) {
+      console.log('Password changed successfully');
+    }
   } else {
     throw Error("No auth.currentUser!");
   }
