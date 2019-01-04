@@ -1,0 +1,11 @@
+.upload_close {
+  color: rgb(252, 97, 2);
+  font-size: 20px;
+  position: absolute !important;
+  transform: translate(50%, 50%);
+  z-index: 1;
+}
+
+.upload_close:hover {
+  cursor: pointer;
+}

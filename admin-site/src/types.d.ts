@@ -10,9 +10,15 @@ export interface User {
   lastName: string;
 }
 
+export interface Image {
+  filename: string;
+  palette: string;
+  src: string;
+}
+
 export interface Palette {
   description: string;
-  // image: string;
+  image: Image;
   link: string;
   name: string;
   price: number;

@@ -15,7 +15,10 @@ export const createPalette = (palette: Palette) => {
 export const getAllPalettes = (dispatch: Dispatch) => {
   db.ref('/palettes/').on('value', (snapshot: any) => {
     if (snapshot.val()) {
+      console.log('palettes')
       dispatch(palettesState.setPalettes(snapshot.val()));
+    } else {
+      dispatch(palettesState.resetPalettes());
     }
   });
 }
