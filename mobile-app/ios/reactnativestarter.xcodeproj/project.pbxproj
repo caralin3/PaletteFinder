@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		0013C547EE664C7DB70AFE51 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FB56C13CA9B495E804721D6 /* Entypo.ttf */; };
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
@@ -52,6 +53,7 @@
 		7A296C3A795E438E99BEA85A /* libReactNativeConfig.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 437CCE37BC5C49339DA96F38 /* libReactNativeConfig.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8A4969DB4CD2447AA6B4F625 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AD1EADAD6BE49A0952261B5 /* FontAwesome5_Regular.ttf */; };
+		951A71F6B2EA4B18809B15E7 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CD1B441A6446CFA30C701D /* libRNFirebase.a */; };
 		98C72DE6CB3B443BA0E92F25 /* libAppCenterReactNativeCrashes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B8231E7CBB041EEA00F5655 /* libAppCenterReactNativeCrashes.a */; };
 		9ADA15BD78D745D2A29B42C2 /* AppCenter-Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6BE889353104461AAD32F815 /* AppCenter-Config.plist */; };
 		9AEEC1A1696F4363A821CFD8 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56410961C37B4B5B91EC9325 /* MaterialCommunityIcons.ttf */; };
@@ -62,9 +64,9 @@
 		BBCDFF563D5A4F9C8579396B /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6E7B9D72B9664E749A2ED73F /* Foundation.ttf */; };
 		BDF4D2B4B1F149D99903EA40 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DD9ECFBE64942BAB1517CF4 /* Octicons.ttf */; };
 		C93F882300D24898888CC7B0 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1274E71CF4F24C56993E57A9 /* FontAwesome5_Solid.ttf */; };
+		D516EB8421E2479C001BB0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D516EB8321E2479C001BB0BD /* GoogleService-Info.plist */; };
 		ECC31FFFEAFC486E9D3E7D84 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21BD97DED8C465CB78D7F22 /* libRNVectorIcons-tvOS.a */; };
 		F74ABBC7A46870C1BF046441 /* libPods-reactnativestarter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4774B824BF2BBC2797A574 /* libPods-reactnativestarter.a */; };
-		951A71F6B2EA4B18809B15E7 /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CD1B441A6446CFA30C701D /* libRNFirebase.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -369,6 +371,13 @@
 			remoteGlobalIDString = 3DF7F6AC203AA09B00D0EAB7;
 			remoteInfo = "ReactNativeConfig-tvOS";
 		};
+		D516EABE21E24183001BB0BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C6A47DEF4EF74E7AABE6B13E /* RNFirebase.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNFirebase;
+		};
 		D5C0CED921D7F61B00469FE8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F37DCF7F81FC4EDF8A6236AE /* AppCenterReactNative.xcodeproj */;
@@ -448,19 +457,20 @@
 		ABA98530BE6C47F59DA71B5B /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		C2A55B181386700CA1820898 /* Pods-reactnativestarter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativestarter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reactnativestarter/Pods-reactnativestarter.debug.xcconfig"; sourceTree = "<group>"; };
+		C6A47DEF4EF74E7AABE6B13E /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		C6C0525B14D24601B458AD24 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		C6CF3FD1ABA6488CA60DD200 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		C87370C3BAB82DCB39149703 /* Pods-reactnativestarter-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativestarter-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-reactnativestarter-tvOSTests/Pods-reactnativestarter-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C9BA29CB659A3AAD518816ED /* Pods-reactnativestarterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativestarterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-reactnativestarterTests/Pods-reactnativestarterTests.release.xcconfig"; sourceTree = "<group>"; };
 		D03D6097ACF14C8DAFF49033 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		D21BD97DED8C465CB78D7F22 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
+		D516EB8321E2479C001BB0BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "reactnativestarter/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DADB17816D4D4A6F96328255 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		DF2C5D68F92A481FA03C5A76 /* AppCenterReactNativeCrashes.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeCrashes.xcodeproj; path = "../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes.xcodeproj"; sourceTree = "<group>"; };
 		E20B492FC5B340E188EC0A98 /* AppCenterReactNativeAnalytics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeAnalytics.xcodeproj; path = "../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics.xcodeproj"; sourceTree = "<group>"; };
+		E5CD1B441A6446CFA30C701D /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		F0B1D99D7AE4BBD6E0242755 /* Pods-reactnativestarter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-reactnativestarter.release.xcconfig"; path = "Pods/Target Support Files/Pods-reactnativestarter/Pods-reactnativestarter.release.xcconfig"; sourceTree = "<group>"; };
 		F37DCF7F81FC4EDF8A6236AE /* AppCenterReactNative.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNative.xcodeproj; path = ../node_modules/appcenter/ios/AppCenterReactNative.xcodeproj; sourceTree = "<group>"; };
-		C6A47DEF4EF74E7AABE6B13E /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		E5CD1B441A6446CFA30C701D /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -626,6 +636,7 @@
 		13B07FAE1A68108700A75B9A /* reactnativestarter */ = {
 			isa = PBXGroup;
 			children = (
+				D516EB8321E2479C001BB0BD /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -794,6 +805,7 @@
 				18D1F484A7A24EF28A625CEE /* libAppCenterReactNative.a */,
 				23C604429B144E0D8FF2BBCD /* libAppCenterReactNativeAnalytics.a */,
 				2B8231E7CBB041EEA00F5655 /* libAppCenterReactNativeCrashes.a */,
+				E5CD1B441A6446CFA30C701D /* libRNFirebase.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -812,6 +824,14 @@
 			children = (
 				D50D2AB121D7E1ED00208428 /* libReactNativeConfig.a */,
 				D50D2AB321D7E1ED00208428 /* libReactNativeConfig-tvOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D516EABB21E24183001BB0BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D516EABF21E24183001BB0BD /* libRNFirebase.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1023,6 +1043,10 @@
 				{
 					ProductGroup = D50D2AAC21D7E1ED00208428 /* Products */;
 					ProjectRef = ABA98530BE6C47F59DA71B5B /* ReactNativeConfig.xcodeproj */;
+				},
+				{
+					ProductGroup = D516EABB21E24183001BB0BD /* Products */;
+					ProjectRef = C6A47DEF4EF74E7AABE6B13E /* RNFirebase.xcodeproj */;
 				},
 				{
 					ProductGroup = D50D2A4B21D7E1DF00208428 /* Products */;
@@ -1327,6 +1351,13 @@
 			remoteRef = D50D2AB221D7E1ED00208428 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		D516EABF21E24183001BB0BD /* libRNFirebase.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFirebase.a;
+			remoteRef = D516EABE21E24183001BB0BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		D5C0CEDA21D7F61B00469FE8 /* libAppCenterReactNative.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1373,6 +1404,7 @@
 				8A4969DB4CD2447AA6B4F625 /* FontAwesome5_Regular.ttf in Resources */,
 				C93F882300D24898888CC7B0 /* FontAwesome5_Solid.ttf in Resources */,
 				BBCDFF563D5A4F9C8579396B /* Foundation.ttf in Resources */,
+				D516EB8421E2479C001BB0BD /* GoogleService-Info.plist in Resources */,
 				0F46B062B0E24DA0BF354876 /* Ionicons.ttf in Resources */,
 				9AEEC1A1696F4363A821CFD8 /* MaterialCommunityIcons.ttf in Resources */,
 				027D98845E134F41ACD5ABE1 /* MaterialIcons.ttf in Resources */,
@@ -1599,7 +1631,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = reactnativestarterTests/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1619,6 +1651,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1642,7 +1675,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = reactnativestarterTests/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1662,6 +1695,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1688,7 +1722,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = reactnativestarter/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1723,7 +1757,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = reactnativestarter/Info.plist;
 				INFOPLIST_OTHER_PREPROCESSOR_FLAGS = "-traditional";
@@ -1762,7 +1796,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = "reactnativestarter-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1778,6 +1812,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1809,7 +1844,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = "reactnativestarter-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1825,6 +1860,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1855,7 +1891,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = "reactnativestarter-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1871,6 +1907,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
@@ -1901,7 +1938,7 @@
 					"$(SRCROOT)/../node_modules/appcenter/ios/AppCenterReactNative",
 					"$(SRCROOT)/../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics",
 					"$(SRCROOT)/../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)..\node_modules\neact-native-firebaseiosRNFirebase/**",
 				);
 				INFOPLIST_FILE = "reactnativestarter-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1917,6 +1954,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
+					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
