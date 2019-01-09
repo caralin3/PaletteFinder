@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.release&quot; &gt; /tmp/envfile&#10;">
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;echo &quot;.env.debug&quot; &gt; /tmp/envfile&#10;">
             </ActionContent>
          </ExecutionAction>
       </PreActions>
@@ -38,9 +38,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "reactnativestarter.app"
-               BlueprintName = "reactnativestarter"
-               ReferencedContainer = "container:reactnativestarter.xcodeproj">
+               BuildableName = "paletteFinder.app"
+               BlueprintName = "paletteFinder"
+               ReferencedContainer = "container:paletteFinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -52,9 +52,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "reactnativestarterTests.xctest"
-               BlueprintName = "reactnativestarterTests"
-               ReferencedContainer = "container:reactnativestarter.xcodeproj">
+               BuildableName = "paletteFinderTests.xctest"
+               BlueprintName = "paletteFinderTests"
+               ReferencedContainer = "container:paletteFinder.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -70,9 +70,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "reactnativestarterTests.xctest"
-               BlueprintName = "reactnativestarterTests"
-               ReferencedContainer = "container:reactnativestarter.xcodeproj">
+               BuildableName = "paletteFinderTests.xctest"
+               BlueprintName = "paletteFinderTests"
+               ReferencedContainer = "container:paletteFinder.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -80,16 +80,16 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reactnativestarter.app"
-            BlueprintName = "reactnativestarter"
-            ReferencedContainer = "container:reactnativestarter.xcodeproj">
+            BuildableName = "paletteFinder.app"
+            BlueprintName = "paletteFinder"
+            ReferencedContainer = "container:paletteFinder.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -103,9 +103,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reactnativestarter.app"
-            BlueprintName = "reactnativestarter"
-            ReferencedContainer = "container:reactnativestarter.xcodeproj">
+            BuildableName = "paletteFinder.app"
+            BlueprintName = "paletteFinder"
+            ReferencedContainer = "container:paletteFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -122,9 +122,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reactnativestarter.app"
-            BlueprintName = "reactnativestarter"
-            ReferencedContainer = "container:reactnativestarter.xcodeproj">
+            BuildableName = "paletteFinder.app"
+            BlueprintName = "paletteFinder"
+            ReferencedContainer = "container:paletteFinder.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
