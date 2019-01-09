@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { DataSnapshot } from 'react-native-firebase/database';
 import { Layout } from '../components';
 import { palettesRef } from '../firebase';
-import { Palette } from '../types';
+import { Palettes } from '../types';
 
 interface HomeStateMappedProps {}
 
@@ -17,12 +17,12 @@ interface HomeMergedProps extends
   HomeProps {}
 
 interface HomeState {
-  palette: Palette;
+  palette: Palettes;
 }
 
 export class Home extends React.Component<HomeMergedProps, HomeState> {
   public readonly state: HomeState = {
-    palette: {} as Palette,
+    palette: {} as Palettes,
   }
 
   public render() {

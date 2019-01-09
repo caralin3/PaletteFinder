@@ -12,3 +12,7 @@ export interface Palette {
   price: number;
   score: number;
 }
+
+export interface Palettes {
+  [id: string]: Palette;
+}
