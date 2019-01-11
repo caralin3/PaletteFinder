@@ -2,6 +2,7 @@ import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { colors } from '../appearance/styles';
+import { content } from '../data';
 
 interface HeaderStateMappedProps {}
 
@@ -30,7 +31,7 @@ export class Header extends React.Component<HeaderMergedProps, HeaderState> {
         name="bars"
         onPress={this.props.toggleDrawer}
       /> */}
-        <Text style={styles.title}>Header</Text>
+        <Text style={styles.title}>{content.header}</Text>
       </View>
     )
   }

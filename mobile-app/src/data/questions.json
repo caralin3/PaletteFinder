@@ -2,21 +2,27 @@
   "l1": {
     "choices": [{
       "value": "Natural",
-      "score": 0
+      "score": 8
     },{
       "value": "Glamorous",
-      "score": 0
+      "score": 6
     }, {
       "value": "Colorful",
-      "score": 0
+      "score": 7
     }],
-    "prompt": "",
+    "prompt": "What type of eyeshadow would you prefer?",
     "number": 1,
     "type": "lifestyle"
   },
   "l2": {
     "choices": [{
       "value": "Natural",
+      "score": 10
+    },{
+      "value": "Glamorous",
+      "score": 20
+    }, {
+      "value": "Colorful",
       "score": 0
     },{
       "value": "Glamorous",

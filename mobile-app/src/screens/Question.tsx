@@ -1,18 +1,21 @@
 import { push } from 'connected-react-router';
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
 import { colors } from '../appearance/styles';
 import { Button, Layout } from '../components';
 import { content, questions } from '../data';
-import { Questions } from '../types';
+import { Choice, Questions } from '../types';
+import { addAnswer, updateScore } from '../store';
 
 interface QuestionStateMappedProps {}
 
 interface QuestionDispatchMappedProps {
-  navigate: (path: string) => any;
+  addAnswer: (id: string, choice: Choice) => void;
+  navigate: (path: string) => void;
+  updateScore: (score: number) => void;
 }
 
 interface QuestionRouteParams {
@@ -24,7 +27,16 @@ interface QuestionProps extends
   QuestionStateMappedProps,
   QuestionDispatchMappedProps {}
 
-export class DisconnectedQuestion extends React.Component<QuestionProps> {
+interface QuestionState {
+  selected: Choice | undefined;
+
+}
+
+export class DisconnectedQuestion extends React.Component<QuestionProps, QuestionState> {
+  public readonly state: QuestionState = {
+    selected: undefined
+  }
+
   private next = () => {
     const { match, navigate } = this.props;
     const id = match.params.id;
@@ -39,29 +51,55 @@ export class DisconnectedQuestion extends React.Component<QuestionProps> {
     }
   }
 
+  private submit = () => {
+    const { addAnswer, match, updateScore } = this.props;
+    const { selected } = this.state;
+    if (!!selected) {
+      addAnswer(match.params.id, selected);
+      updateScore(selected.score)
+      this.next();
+    }
+  }
+
   public render() {
+    const { selected } = this.state;
     const { match } = this.props;
     const quest = (questions as Questions)[match.params.id];
     const type = quest.type.slice(0, 1).toUpperCase() + quest.type.slice(1);
 
     return (
-      <Layout>
-        <View style={styles.container}>
+      <Layout showHeader={true}>
+        <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
           <Text style={styles.title}>
             {type === 'Preference' ? `Eyeshadow ${type}` : type} Question {quest.number}
           </Text>
-          <Text style={styles.title}>{quest.prompt}</Text>
-          <View>
-            
+          <Text style={styles.prompt}>{quest.prompt}</Text>
+          <View style={styles.choices}>
+            {quest.choices.map((choice, i) => (
+              <Button
+                key={i}
+                backgroundColor={
+                  !!selected && selected.value === choice.value ?
+                  colors.neonPink : colors.powderPink
+                }
+                onPress={() => this.setState({ selected: choice })}
+                style={styles.button}
+                text={choice.value.toString()}
+                textColor={
+                  !!selected && selected.value === choice.value ?
+                  colors.white : colors.grapePurple
+                }
+              />
+            ))}
           </View>
           <Button
             backgroundColor={colors.neonPink}
-            onPress={this.next}
+            onPress={this.submit}
             style={styles.button}
             text={content.nextButton}
             textColor={colors.white}
           />
-        </View>
+        </ScrollView>
       </Layout>
     );
   }
@@ -70,7 +108,9 @@ export class DisconnectedQuestion extends React.Component<QuestionProps> {
 const mapDispatchToProps = (
   dispatch: Dispatch<any>
 ): QuestionDispatchMappedProps => ({
-  navigate: (path: string) => dispatch(push(path))
+  addAnswer: (id: string, choice: Choice) => dispatch(addAnswer(id, choice)),
+  navigate: (path: string) => dispatch(push(path)),
+  updateScore: (score: number) => dispatch(updateScore(score))
 });
 
 export const Question = connect(
@@ -81,20 +121,26 @@ export const Question = connect(
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'space-between'
   },
-  title: {
-    color: colors.white,
-    paddingTop: 40
+  choices: {
+    alignItems: 'center'
   },
-  copy: {
+  title: {
+    alignSelf: 'flex-start',
     color: colors.white,
-    paddingVertical: 30,
+    paddingLeft: 50,
+    paddingTop: 50
+  },
+  prompt: {
+    alignSelf: 'flex-start',
+    color: colors.white,
+    paddingLeft: 50,
+    paddingVertical: 50,
     width: 250
   },
   button: {
-    marginBottom: 50
+    marginBottom: 50,
   },
   image: {
     height: 300,

@@ -15,12 +15,18 @@ export const Button: React.SFC<ButtonProps> = (props) => (
     onPress={props.onPress}
     style={StyleSheet.flatten([styles.container, props.style, {backgroundColor: props.backgroundColor}])}
   >
-    <Text style={{color: props.textColor}}>{props.text}</Text>
+    <Text style={StyleSheet.flatten([styles.text, {color: props.textColor}])}>
+      {props.text}
+    </Text>
   </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
   container: {
     padding: 10,
+    width: 200
+  },
+  text: {
+    textAlign: 'center'
   }
 });

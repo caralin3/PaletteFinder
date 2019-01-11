@@ -24,12 +24,15 @@ export interface Choice {
 
 export interface Question {
   choices: Choice[];
-    prompt: string;
-    number: number;
-    type: 'lifestyle' | 'preference';
-
+  prompt: string;
+  number: number;
+  type: 'lifestyle' | 'preference';
 }
 
 export interface Questions {
   [id: string]: Question
+}
+
+export interface Answer {
+  [id: string]: Choice;
 }
