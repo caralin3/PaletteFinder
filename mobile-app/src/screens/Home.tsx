@@ -36,7 +36,7 @@ export class Home extends React.Component<HomeMergedProps, HomeState> {
     return (
       <Layout>
         <View style={styles.container}>
-          <Text>{JSON.stringify(this.state.palette)}</Text>
+          <Text style={styles.text}>{JSON.stringify(this.state.palette)}</Text>
         </View>
       </Layout>
     )
@@ -46,5 +46,8 @@ export class Home extends React.Component<HomeMergedProps, HomeState> {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  text: {
+    fontFamily: 'Karla-Regular'
   }
 })

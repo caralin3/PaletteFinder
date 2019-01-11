@@ -65,6 +65,12 @@
 		BDF4D2B4B1F149D99903EA40 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DD9ECFBE64942BAB1517CF4 /* Octicons.ttf */; };
 		C93F882300D24898888CC7B0 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1274E71CF4F24C56993E57A9 /* FontAwesome5_Solid.ttf */; };
 		D516EB8421E2479C001BB0BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D516EB8321E2479C001BB0BD /* GoogleService-Info.plist */; };
+		D58E761A21E82E2600959BEB /* Karla-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58E75E721E82E2400959BEB /* Karla-Regular.ttf */; };
+		D58E761B21E82E2600959BEB /* CherrySwash-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58E761521E82E2500959BEB /* CherrySwash-Regular.ttf */; };
+		D58E761C21E82E2600959BEB /* CherrySwash-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58E761621E82E2500959BEB /* CherrySwash-Bold.ttf */; };
+		D58E761D21E82E2600959BEB /* Karla-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58E761721E82E2600959BEB /* Karla-Bold.ttf */; };
+		D58E761E21E82E2600959BEB /* Karla-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58E761821E82E2600959BEB /* Karla-BoldItalic.ttf */; };
+		D58E761F21E82E2600959BEB /* Karla-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D58E761921E82E2600959BEB /* Karla-Italic.ttf */; };
 		ECC31FFFEAFC486E9D3E7D84 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21BD97DED8C465CB78D7F22 /* libRNVectorIcons-tvOS.a */; };
 		F74ABBC7A46870C1BF046441 /* libPods-paletteFinder.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D4774B824BF2BBC2797A574 /* libPods-paletteFinder.a */; };
 /* End PBXBuildFile section */
@@ -465,6 +471,12 @@
 		D03D6097ACF14C8DAFF49033 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		D21BD97DED8C465CB78D7F22 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		D516EB8321E2479C001BB0BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "paletteFinder/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D58E75E721E82E2400959BEB /* Karla-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Karla-Regular.ttf"; path = "../src/assets/fonts/Karla-Regular.ttf"; sourceTree = "<group>"; };
+		D58E761521E82E2500959BEB /* CherrySwash-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CherrySwash-Regular.ttf"; path = "../src/assets/fonts/CherrySwash-Regular.ttf"; sourceTree = "<group>"; };
+		D58E761621E82E2500959BEB /* CherrySwash-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "CherrySwash-Bold.ttf"; path = "../src/assets/fonts/CherrySwash-Bold.ttf"; sourceTree = "<group>"; };
+		D58E761721E82E2600959BEB /* Karla-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Karla-Bold.ttf"; path = "../src/assets/fonts/Karla-Bold.ttf"; sourceTree = "<group>"; };
+		D58E761821E82E2600959BEB /* Karla-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Karla-BoldItalic.ttf"; path = "../src/assets/fonts/Karla-BoldItalic.ttf"; sourceTree = "<group>"; };
+		D58E761921E82E2600959BEB /* Karla-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Karla-Italic.ttf"; path = "../src/assets/fonts/Karla-Italic.ttf"; sourceTree = "<group>"; };
 		DADB17816D4D4A6F96328255 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		DF2C5D68F92A481FA03C5A76 /* AppCenterReactNativeCrashes.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeCrashes.xcodeproj; path = "../node_modules/appcenter-crashes/ios/AppCenterReactNativeCrashes.xcodeproj"; sourceTree = "<group>"; };
 		E20B492FC5B340E188EC0A98 /* AppCenterReactNativeAnalytics.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = AppCenterReactNativeAnalytics.xcodeproj; path = "../node_modules/appcenter-analytics/ios/AppCenterReactNativeAnalytics.xcodeproj"; sourceTree = "<group>"; };
@@ -738,6 +750,12 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D58E761621E82E2500959BEB /* CherrySwash-Bold.ttf */,
+				D58E761521E82E2500959BEB /* CherrySwash-Regular.ttf */,
+				D58E761721E82E2600959BEB /* Karla-Bold.ttf */,
+				D58E761821E82E2600959BEB /* Karla-BoldItalic.ttf */,
+				D58E761921E82E2600959BEB /* Karla-Italic.ttf */,
+				D58E75E721E82E2400959BEB /* Karla-Regular.ttf */,
 				13B07FAE1A68108700A75B9A /* paletteFinder */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* paletteFinderTests */,
@@ -1393,6 +1411,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D58E761A21E82E2600959BEB /* Karla-Regular.ttf in Resources */,
+				D58E761B21E82E2600959BEB /* CherrySwash-Regular.ttf in Resources */,
+				D58E761C21E82E2600959BEB /* CherrySwash-Bold.ttf in Resources */,
+				D58E761D21E82E2600959BEB /* Karla-Bold.ttf in Resources */,
+				D58E761E21E82E2600959BEB /* Karla-BoldItalic.ttf in Resources */,
+				D58E761F21E82E2600959BEB /* Karla-Italic.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				6D7966A1F57C4046BC040624 /* AntDesign.ttf in Resources */,
