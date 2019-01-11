@@ -15,11 +15,15 @@ import {
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'remote-redux-devtools';
+import { AnswersState, reducer as answersReducer  } from './answers';
 import { LayoutState, reducer as layoutReducer  } from './layout';
+import { ScoreState, reducer as scoreReducer  } from './score';
 
 export interface ApplicationState {
+  answers: AnswersState;
   layout: LayoutState;
   router: RouterState;
+  score: ScoreState;
 }
 
 export default (history: History.History): Store<ApplicationState> => {
@@ -33,14 +37,16 @@ export default (history: History.History): Store<ApplicationState> => {
   );
 
   const rootReducer = combineReducers<ApplicationState>({
+    answers: answersReducer,
     layout: layoutReducer,
-    router: connectRouter(history)
+    router: connectRouter(history),
+    score: scoreReducer
   });
 
   const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: []
+    whitelist: ['answers', 'score']
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);
