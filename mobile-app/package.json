@@ -22,13 +22,13 @@
     "react-native": "0.57.8",
     "react-native-config": "^0.11.7",
     "react-native-drawer-layout": "^2.0.0",
+    "react-native-firebase": "^5.1.1",
     "react-native-vector-icons": "^6.1.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
-    "redux-thunk": "^2.3.0",
-    "remote-redux-devtools": "^0.5.16"
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "@types/jest": "^23.3.10",
@@ -44,7 +44,7 @@
     "prettier": "^1.15.3",
     "react-native-typescript-transformer": "^1.2.11",
     "react-test-renderer": "16.6.3",
-    "remote-redux-devtools": "^0.5.14",
+    "remote-redux-devtools": "^0.5.16",
     "ts-jest": "^23.10.5",
     "typescript": "^3.2.2"
   },
