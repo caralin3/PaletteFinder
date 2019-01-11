@@ -4,9 +4,10 @@ import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Dimensions, SafeAreaView, StatusBar, StyleSheet, View, Platform } from 'react-native';
-import { Footer, Header, Sidebar } from './';
+import { colors } from '../appearance/styles';
 import { ApplicationState, toggleDrawer } from '../store';
 import { detect } from '../utility';
+import { Footer, Header, Sidebar } from './';
 
 interface LayoutStateMappedProps {
   drawerOpen: boolean;
@@ -19,7 +20,9 @@ interface LayoutDispatchMappedProps {
   toggleDrawer: (open: boolean) => void;
 }
 
-interface LayoutProps {}
+interface LayoutProps {
+  showHeader?: boolean;
+}
 
 interface LayoutMergedProps extends
   LayoutStateMappedProps,
@@ -48,7 +51,7 @@ export class DisconnectedLayout extends React.Component<LayoutMergedProps, Layou
   };
 
   public render() {
-    const { hideFooter, hideHeader } = this.props;
+    const { hideFooter, hideHeader, showHeader } = this.props;
     const height = Platform.OS === 'ios' ? 18 : StatusBar.currentHeight;
     // const screenWidth: number = Dimensions.get('window').width;
     // const LayoutWidth = screenWidth * 0.75;
@@ -79,11 +82,12 @@ export class DisconnectedLayout extends React.Component<LayoutMergedProps, Layou
           )}
           style={styles.drawer}
         > */}
-          {!hideHeader && <Header toggleDrawer={this.toggleDrawer} />}
+          {/* {!hideHeader && <Header toggleDrawer={this.toggleDrawer} />} */}
+          {!!showHeader && <Header />}
             <View style={styles.container}>
               {this.props.children}
             </View>
-          {!hideFooter && <Footer />}
+          {/* {!hideFooter && <Footer />} */}
         {/* </DrawerLayout> */}
       </SafeAreaView>
     )
@@ -115,11 +119,11 @@ const styles = StyleSheet.create({
   },
   drawer: {
     alignItems: 'center',
-    backgroundColor: '#1A9DD8',
+    backgroundColor: colors.grapePurple,
     flex: 1
   },
   container: {
-    backgroundColor: 'lightblue',
+    backgroundColor: colors.grapePurple,
     flex: 1,
     justifyContent: 'space-between'
   }

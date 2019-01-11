@@ -4,6 +4,7 @@ import { DataSnapshot } from 'react-native-firebase/database';
 import { Layout } from '../components';
 import { palettesRef } from '../firebase';
 import { Palettes } from '../types';
+import { colors } from '../appearance/styles';
 
 interface HomeStateMappedProps {}
 
@@ -36,7 +37,7 @@ export class Home extends React.Component<HomeMergedProps, HomeState> {
     return (
       <Layout>
         <View style={styles.container}>
-          <Text>{JSON.stringify(this.state.palette)}</Text>
+          <Text style={{color: colors.white}}>{JSON.stringify(this.state.palette)}</Text>
         </View>
       </Layout>
     )

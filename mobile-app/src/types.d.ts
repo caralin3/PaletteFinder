@@ -16,3 +16,20 @@ export interface Palette {
 export interface Palettes {
   [id: string]: Palette;
 }
+
+export interface Choice {
+  value: string | number;
+  score: number;
+}
+
+export interface Question {
+  choices: Choice[];
+    prompt: string;
+    number: number;
+    type: 'lifestyle' | 'preference';
+
+}
+
+export interface Questions {
+  [id: string]: Question
+}

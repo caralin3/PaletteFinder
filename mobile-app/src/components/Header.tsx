@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { colors } from '../appearance/styles';
 
 interface HeaderStateMappedProps {}
 
 interface HeaderDispatchMappedProps {}
 
 interface HeaderProps {
-  toggleDrawer: () => void;
+  // toggleDrawer: () => void;
 }
 
 interface HeaderMergedProps extends
@@ -23,13 +24,13 @@ export class Header extends React.Component<HeaderMergedProps, HeaderState> {
   public render() {
     return (
       <View style={styles.container}>
-      <FontAwesomeIcon
+      {/* <FontAwesomeIcon
         size={24}
         style={styles.bars}
         name="bars"
         onPress={this.props.toggleDrawer}
-      />
-        <Text>Header</Text>
+      /> */}
+        <Text style={styles.title}>Header</Text>
       </View>
     )
   }
@@ -38,15 +39,18 @@ export class Header extends React.Component<HeaderMergedProps, HeaderState> {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: '#DDD',
+    backgroundColor: colors.neonPink,
     flexDirection: 'row',
     height: 50,
-    // justifyContent: 'space-between',
+    justifyContent: 'center',
     paddingHorizontal: 5
   },
-  bars: {
-    color: '#fff',
-    flex: 1,
-    padding: 10
-  },
+  title: {
+    color: colors.white
+  }
+  // bars: {
+  //   color: '#fff',
+  //   flex: 1,
+  //   padding: 10
+  // },
 })

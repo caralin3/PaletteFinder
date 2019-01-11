@@ -1,0 +1,167 @@
+{
+  "l1": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 1,
+    "type": "lifestyle"
+  },
+  "l2": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 2,
+    "type": "lifestyle"
+  },
+  "l3": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 3,
+    "type": "lifestyle"
+  },
+  "l4": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 4,
+    "type": "lifestyle"
+  },
+  "l5": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 5,
+    "type": "lifestyle"
+  },
+  "l6": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 6,
+    "type": "lifestyle"
+  },
+  "l7": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 7,
+    "type": "lifestyle"
+  },
+  "p1": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 1,
+    "type": "preference"
+  },
+  "p2": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 2,
+    "type": "preference"
+  },
+  "p3": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 3,
+    "type": "preference"
+  },
+  "p4": {
+    "choices": [{
+      "value": "Natural",
+      "score": 0
+    },{
+      "value": "Glamorous",
+      "score": 0
+    }, {
+      "value": "Colorful",
+      "score": 0
+    }],
+    "prompt": "",
+    "number": 4,
+    "type": "preference"
+  }
+}

@@ -27,7 +27,7 @@ export default class App extends React.Component<AppProps> {
       let screenName = location.pathname.substr(1);
       const firstIndex = screenName.indexOf('/');
       screenName = firstIndex > -1 ? screenName.substring(0, firstIndex) : screenName;
-      // console.log(screenName);
+      console.log(screenName);
     });
   }
 
