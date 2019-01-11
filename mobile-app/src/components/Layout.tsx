@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { push } from 'connected-react-router';
-import DrawerLayout from 'react-native-drawer-layout';
+// import DrawerLayout from 'react-native-drawer-layout';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Dimensions, SafeAreaView, StatusBar, StyleSheet, View, Platform } from 'react-native';
@@ -29,29 +29,29 @@ interface LayoutMergedProps extends
 interface LayoutState {}
 
 export class DisconnectedLayout extends React.Component<LayoutMergedProps, LayoutState> {
-  private drawer: DrawerLayout | null = null;
+  // private drawer: DrawerLayout | null = null;
 
   public readonly state: LayoutState = {}
 
   public toggleDrawer = () => {
-    const { drawerOpen, toggleDrawer } = this.props;
-    if (this.drawer) {
-      if (drawerOpen) {
-        this.drawer.closeDrawer();
-        toggleDrawer(false);
+    // const { drawerOpen, toggleDrawer } = this.props;
+    // if (this.drawer) {
+    //   if (drawerOpen) {
+    //     this.drawer.closeDrawer();
+    //     toggleDrawer(false);
 
-      } else {
-        this.drawer.openDrawer();
-        toggleDrawer(true);
-      }
-    }
+    //   } else {
+    //     this.drawer.openDrawer();
+    //     toggleDrawer(true);
+    //   }
+    // }
   };
 
   public render() {
     const { hideFooter, hideHeader } = this.props;
     const height = Platform.OS === 'ios' ? 18 : StatusBar.currentHeight;
-    const screenWidth: number = Dimensions.get('window').width;
-    const LayoutWidth = screenWidth * 0.75;
+    // const screenWidth: number = Dimensions.get('window').width;
+    // const LayoutWidth = screenWidth * 0.75;
 
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -60,7 +60,7 @@ export class DisconnectedLayout extends React.Component<LayoutMergedProps, Layou
             <StatusBar />
           </View>
         )}
-        <DrawerLayout
+        {/* <DrawerLayout
           ref={(drawer: DrawerLayout | null) => {
             this.drawer = drawer;
           }}
@@ -78,13 +78,13 @@ export class DisconnectedLayout extends React.Component<LayoutMergedProps, Layou
             </View>
           )}
           style={styles.drawer}
-        >
+        > */}
           {!hideHeader && <Header toggleDrawer={this.toggleDrawer} />}
             <View style={styles.container}>
               {this.props.children}
             </View>
           {!hideFooter && <Footer />}
-        </DrawerLayout>
+        {/* </DrawerLayout> */}
       </SafeAreaView>
     )
   }

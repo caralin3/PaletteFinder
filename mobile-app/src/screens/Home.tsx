@@ -26,8 +26,11 @@ export class Home extends React.Component<HomeMergedProps, HomeState> {
   }
 
   public render() {
-    palettesRef.orderByChild('score').startAt(30).once('value', (snapshot: DataSnapshot) => {
-      this.setState({ palette: snapshot.val() });
+    palettesRef.orderByChild('score').startAt(30).once('value', (snapshot: any) => {
+      snapshot.forEach((child: any) => {
+        
+        this.setState({ palette: child.val() });
+      })
     });
 
     return (
