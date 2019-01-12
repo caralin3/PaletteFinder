@@ -28,14 +28,32 @@
       "value": "Never",
       "score": 0
     }],
-    "prompt": "How often are your looks affected by your job?",
+    "prompt": "How often does your job affect your looks?",
     "number": 2,
     "type": "lifestyle"
   },
   "l3": {
     "choices": [{
-      "value": 18,
-      "score": 0
+      "value": "13-17",
+      "score": 1
+    }, {
+      "value": "18-25",
+      "score": 2
+    }, {
+      "value": "26-32",
+      "score": 3
+    }, {
+      "value": "33-50",
+      "score": 5
+    }, {
+      "value": "51-60",
+      "score": 7
+    }, {
+      "value": "61-70",
+      "score": 8
+    }, {
+      "value": "70",
+      "score": 10
     }],
     "prompt": "What is your age?",
     "number": 3,
@@ -70,11 +88,11 @@
       "value": "Yes",
       "score": 1
     },{
-      "value": "Somewhat",
-      "score": 3
-    }, {
       "value": "No",
       "score": 6
+    }, {
+      "value": "Somewhat",
+      "score": 3
     }],
     "prompt": "Are you an experienced user?",
     "number": 5,
@@ -148,23 +166,47 @@
       "value": "A good mixture",
       "score": 3
     }],
-    "prompt": "What would you want the shades to be?",
+    "prompt": "What would you want most of the shades to be?",
     "number": 2,
     "type": "preference"
   },
   "p3": {
     "choices": [{
-      "value": 6,
-      "score": 6
+      "value": "6-13 shades",
+      "score": 3
+    }, {
+      "value": "14-26 shades",
+      "score": 2
+    }, {
+      "value": "27-35 shades",
+      "score": 2
     }],
-    "prompt": "How many shades are you looking for?",
+    "prompt": "What is the minimum number of shades you want?",
     "number": 3,
     "type": "preference"
   },
   "p4": {
     "choices": [{
-      "value": 20,
-      "score": 0
+      "value": "7-15",
+      "score": 7
+    }, {
+      "value": "16-21",
+      "score": 6
+    }, {
+      "value": "22-30",
+      "score": 5
+    }, {
+      "value": "31-40",
+      "score": 4
+    }, {
+      "value": "41-50",
+      "score": 3
+    }, {
+      "value": "51-60",
+      "score": 2
+    }, {
+      "value": "61-65",
+      "score": 1
     }],
     "prompt": "How much do you want to spend?",
     "number": 4,

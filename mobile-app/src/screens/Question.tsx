@@ -1,6 +1,6 @@
 import { push } from 'connected-react-router';
 import * as React from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Platform, ScrollView, StyleSheet, Text, View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
@@ -29,12 +29,13 @@ interface QuestionProps extends
 
 interface QuestionState {
   selected: Choice | undefined;
-
+  value: string | undefined;
 }
 
 export class DisconnectedQuestion extends React.Component<QuestionProps, QuestionState> {
   public readonly state: QuestionState = {
-    selected: undefined
+    selected: undefined,
+    value: undefined,
   }
 
   private next = () => {
@@ -51,21 +52,59 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
     }
   }
 
+  private handleNumberQuestions = (input: string) => {
+    const { match } = this.props;
+    const id = match.params.id;
+    const value = parseInt(input, 10);
+    const quest = (questions as Questions)[id];
+    let score: number = 0;
+    quest.choices.forEach(choice => {
+      const range: string[] = choice.value.toString().split('-');
+      const min: number = parseInt(range[0], 10);
+      if (range.length === 2) {
+        const max: number = parseInt(range[1], 10);
+        if (value >= min && value <= max) {
+          score = choice.score;
+        }
+      } else {
+        if (value >= min) {
+          score = choice.score;
+        }
+      }
+    });
+    const chosen: Choice = {
+      score,
+      value
+    }
+    return chosen;
+  }
+
   private submit = () => {
     const { addAnswer, match, updateScore } = this.props;
-    const { selected } = this.state;
-    // if (!!selected) {
-      // addAnswer(match.params.id, selected);
-      // updateScore(selected.score)
+    const { selected, value } = this.state;
+    let choice: Choice | undefined;
+    if (!!selected) {
+      choice = selected;
+      this.setState({ selected: undefined });
+    } else if (!!value) {
+      choice = this.handleNumberQuestions(value);
+      this.setState({ value: undefined });
+    }
+    if (choice) {
+      addAnswer(match.params.id, choice);
+      updateScore(choice.score);
       this.next();
-    // }
+    }
   }
 
   public render() {
     const { selected } = this.state;
     const { match } = this.props;
-    const quest = (questions as Questions)[match.params.id];
+    const id = match.params.id;
+    const quest = (questions as Questions)[id];
     const type = quest.type.slice(0, 1).toUpperCase() + quest.type.slice(1);
+    const inputQuestion = id === 'l3' || id === 'p4';
+    const ios = Platform.OS === 'ios';
 
     return (
       <Layout showHeader={true}>
@@ -75,21 +114,33 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
           </Text>
           <Text style={styles.prompt}>{quest.prompt}</Text>
           <View style={styles.choices}>
-            {quest.choices.map((choice, i) => (
-              <Button
-                key={i}
-                backgroundColor={
-                  !!selected && selected.value === choice.value ?
-                  colors.palePurple : colors.powderPink
-                }
-                onPress={() => this.setState({ selected: choice })}
-                style={styles.button}
-                text={choice.value.toString()}
-                textColor={
-                  !!selected && selected.value === choice.value ?
-                  colors.grapePurple : colors.neonPink
-                }
+            {inputQuestion ?
+              <View style={styles.choices}>
+              <TextInput
+                maxLength={2}
+                keyboardType="number-pad"
+                onChangeText={(value) => this.setState({ value })}
+                placeholder="13"
+                returnKeyType="done"
+                style={StyleSheet.flatten([styles.input, ios && {height: 50}])}
+                value={this.state.value}
               />
+              </View> :
+              quest.choices.map((choice, i) => (
+                <Button
+                  key={i}
+                  backgroundColor={
+                    !!selected && selected.value === choice.value ?
+                    colors.palePurple : colors.powderPink
+                  }
+                  onPress={() => this.setState({ selected: choice })}
+                  style={styles.button}
+                  text={choice.value.toString()}
+                  textColor={
+                    !!selected && selected.value === choice.value ?
+                    colors.grapePurple : colors.neonPink
+                  }
+                />
             ))}
           </View>
           <Button
@@ -146,6 +197,15 @@ const styles = StyleSheet.create({
   },
   button: {
     marginBottom: 40,
+  },
+  input: {
+    backgroundColor: colors.white,
+    fontFamily: textFonts.primary,
+    fontSize: 24,
+    marginBottom: 100,
+    marginTop: 50,
+    textAlign: 'right',
+    width: 300
   },
   image: {
     height: 300,
