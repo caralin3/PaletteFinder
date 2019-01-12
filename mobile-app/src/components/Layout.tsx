@@ -4,7 +4,7 @@ import { push } from 'connected-react-router';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Dimensions, SafeAreaView, StatusBar, StyleSheet, View, Platform } from 'react-native';
-import { colors } from '../appearance/styles';
+import { colors } from '../appearance';
 import { ApplicationState, toggleDrawer } from '../store';
 import { detect } from '../utility';
 import { Footer, Header, Sidebar } from './';
@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
+    alignItems: 'center',
     backgroundColor: colors.grapePurple,
     flex: 1,
     justifyContent: 'space-between'

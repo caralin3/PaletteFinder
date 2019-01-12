@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { colors } from '../appearance/styles';
+import { colors } from '../appearance';
 import { Button, Layout } from '../components';
 import { content } from '../data';
 

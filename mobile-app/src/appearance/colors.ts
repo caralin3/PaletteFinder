@@ -1,6 +1,6 @@
 const colors = {
   grapePurple: '#321547',
-  lavender: '#B88935',
+  palePurple: '#b889db',
   neonPink: '#e90798',
   orangeYellow: '#f5a623',
   powderPink: '#f4b2d9',

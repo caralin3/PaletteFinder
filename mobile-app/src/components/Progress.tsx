@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { colors } from '../appearance/styles';
+import { colors } from '../appearance';
 
 export interface ProgressProps {
   count: number;

@@ -4,7 +4,7 @@ import { DataSnapshot } from 'react-native-firebase/database';
 import { Layout } from '../components';
 import { palettesRef } from '../firebase';
 import { Palettes } from '../types';
-import { colors } from '../appearance/styles';
+import { colors } from '../appearance';
 
 interface HomeStateMappedProps {}
 

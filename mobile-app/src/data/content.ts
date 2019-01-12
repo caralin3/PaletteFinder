@@ -1,7 +1,7 @@
 export const header = 'Eyeshadow Palette Finder'
-export const welcomeMsg = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+export const welcomeMsg = 'Discover a palette that best fits your overall needs and preferences by answering a few questions.';
 export const welcomeButton = 'Let\'s Get Swatching!';
 export const nextButton = 'Next';
 export const continueButton = 'Continue';
-export const continueMsg = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+export const continueMsg = 'Now let’s pick your Eyeshadow Preferences';
 export const resultsButton = 'Finish';

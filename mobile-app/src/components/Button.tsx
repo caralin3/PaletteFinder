@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { StyleProp, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
+import { textFonts } from '../appearance';
 
 export interface ButtonProps {
   backgroundColor: string;
@@ -23,10 +24,12 @@ export const Button: React.SFC<ButtonProps> = (props) => (
 
 const styles = StyleSheet.create({
   container: {
-    padding: 10,
-    width: 200
+    padding: 15,
+    width: 250
   },
   text: {
+    fontFamily: textFonts.primary,
+    fontSize: 22,
     textAlign: 'center'
   }
 });

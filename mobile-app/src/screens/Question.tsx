@@ -4,7 +4,7 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
-import { colors } from '../appearance/styles';
+import { colors, textFonts } from '../appearance';
 import { Button, Layout } from '../components';
 import { content, questions } from '../data';
 import { Choice, Questions } from '../types';
@@ -54,11 +54,11 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
   private submit = () => {
     const { addAnswer, match, updateScore } = this.props;
     const { selected } = this.state;
-    if (!!selected) {
-      addAnswer(match.params.id, selected);
-      updateScore(selected.score)
+    // if (!!selected) {
+      // addAnswer(match.params.id, selected);
+      // updateScore(selected.score)
       this.next();
-    }
+    // }
   }
 
   public render() {
@@ -71,7 +71,7 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
       <Layout showHeader={true}>
         <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
           <Text style={styles.title}>
-            {type === 'Preference' ? `Eyeshadow ${type}` : type} Question {quest.number}
+            {type} Question {quest.number}
           </Text>
           <Text style={styles.prompt}>{quest.prompt}</Text>
           <View style={styles.choices}>
@@ -80,14 +80,14 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
                 key={i}
                 backgroundColor={
                   !!selected && selected.value === choice.value ?
-                  colors.neonPink : colors.powderPink
+                  colors.palePurple : colors.powderPink
                 }
                 onPress={() => this.setState({ selected: choice })}
                 style={styles.button}
                 text={choice.value.toString()}
                 textColor={
                   !!selected && selected.value === choice.value ?
-                  colors.white : colors.grapePurple
+                  colors.grapePurple : colors.neonPink
                 }
               />
             ))}
@@ -124,23 +124,28 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   choices: {
-    alignItems: 'center'
+    alignItems: 'center',
+    flex: 1,
+    paddingBottom: 20,
   },
   title: {
     alignSelf: 'flex-start',
     color: colors.white,
-    paddingLeft: 50,
-    paddingTop: 50
+    fontFamily: textFonts.primary,
+    fontSize: 24,
+    paddingLeft: 30,
+    paddingVertical: 30
   },
   prompt: {
     alignSelf: 'flex-start',
     color: colors.white,
-    paddingLeft: 50,
-    paddingVertical: 50,
-    width: 250
+    fontFamily: textFonts.primary,
+    fontSize: 24,
+    paddingHorizontal: 30,
+    paddingBottom: 50,
   },
   button: {
-    marginBottom: 50,
+    marginBottom: 40,
   },
   image: {
     height: 300,

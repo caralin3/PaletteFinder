@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import { colors } from '../appearance/styles';
+import { colors, textFonts } from '../appearance';
 import { content } from '../data';
 
 interface HeaderStateMappedProps {}
@@ -42,12 +42,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: colors.neonPink,
     flexDirection: 'row',
-    height: 50,
+    height: 75,
     justifyContent: 'center',
     paddingHorizontal: 5
   },
   title: {
-    color: colors.white
+    color: colors.white,
+    fontFamily: textFonts.header,
+    fontSize: 24
   }
   // bars: {
   //   color: '#fff',

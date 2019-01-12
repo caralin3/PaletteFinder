@@ -1,9 +1,9 @@
 import { push } from 'connected-react-router';
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { colors } from '../appearance/styles';
+import { colors, textFonts } from '../appearance';
 import { Button, Layout } from '../components';
 import { content } from '../data';
 
@@ -20,15 +20,18 @@ interface WelcomeProps extends
 export const DisconnectedWelcome: React.SFC<WelcomeProps> = (props) => (
   <Layout>
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
-      <View>
-        <Image style={styles.image} source={{uri: 'https://picsum.photos/250/300'}} />
+      <Text style={StyleSheet.flatten([styles.title, {paddingTop: Dimensions.get('window').height / 15}])}>Welcome</Text>
+      <View style={styles.middle}>
+        <Image 
+          style={styles.image}
+          source={require('../appearance/images/icon.png')}
+        />
         <Text style={styles.copy}>{content.welcomeMsg}</Text>
       </View>
       <Button
         backgroundColor={colors.neonPink}
         onPress={() => props.navigate('/Question/l1')}
-        style={styles.button}
+        style={{marginBottom: Dimensions.get('window').height / 15}}
         text={content.welcomeButton}
         textColor={colors.white}
       />
@@ -53,20 +56,26 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between'
   },
+  middle: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center'
+  },
   title: {
     color: colors.white,
-    paddingTop: 40
+    fontFamily: textFonts.header,
+    fontSize: 32
   },
   copy: {
     color: colors.white,
+    fontFamily: textFonts.primary,
+    fontSize: 24,
+    paddingHorizontal: 40,
     paddingVertical: 30,
-    width: 250
-  },
-  button: {
-    marginBottom: 50
+    textAlign: 'center',
   },
   image: {
-    height: 300,
-    width: 250,
+    height: 200,
+    resizeMode: 'contain'
   }
 })

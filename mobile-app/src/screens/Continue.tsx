@@ -1,9 +1,9 @@
 import { push } from 'connected-react-router';
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { colors } from '../appearance/styles';
+import { colors, textFonts } from '../appearance';
 import { Button, Layout } from '../components';
 import { content } from '../data';
 
@@ -18,12 +18,13 @@ interface ContinueProps extends
   ContinueDispatchMappedProps {}
 
 export const DisconnectedContinue: React.SFC<ContinueProps> = (props) => (
-  <Layout>
+  <Layout showHeader={true}>
     <View style={styles.container}>
-      <View>
-        <Image style={styles.image} source={{uri: 'https://picsum.photos/250/300'}} />
-        <Text style={styles.copy}>{content.continueMsg}</Text>
-      </View>
+      <Text style={styles.copy}>{content.continueMsg}</Text>
+      <Image
+        style={styles.image}
+        source={require('../appearance/images/icon.png')}
+      />
       <Button
         backgroundColor={colors.neonPink}
         onPress={() => props.navigate('/Question/p1')}
@@ -52,20 +53,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between'
   },
-  title: {
-    color: colors.white,
-    paddingTop: 40
-  },
   copy: {
     color: colors.white,
-    paddingVertical: 30,
-    width: 250
+    fontFamily: textFonts.primary,
+    fontSize: 24,
+    paddingHorizontal: 40,
+    paddingTop: 75,
+    textAlign: 'center',
   },
   button: {
     marginBottom: 50
   },
   image: {
-    height: 300,
-    width: 250,
+    height: 200,
+    resizeMode: 'contain'
   }
 })
