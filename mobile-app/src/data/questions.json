@@ -2,13 +2,13 @@
   "l1": {
     "choices": [{
       "value": "Natural",
-      "score": 8
+      "score": 11
     },{
       "value": "Glamorous",
-      "score": 6
+      "score": 4
     }, {
       "value": "Colorful",
-      "score": 7
+      "score": 1
     }],
     "prompt": "What type of eyeshadow look do you usually choose?",
     "number": 1,
@@ -16,157 +16,157 @@
   },
   "l2": {
     "choices": [{
-      "value": "Natural",
-      "score": 10
+      "value": "Always",
+      "score": 13
     },{
-      "value": "Glamorous",
-      "score": 20
+      "value": "Often",
+      "score": 7
     }, {
-      "value": "Colorful",
-      "score": 0
+      "value": "Sometimes",
+      "score": 2
     },{
-      "value": "Glamorous",
-      "score": 0
-    }, {
-      "value": "Colorful",
+      "value": "Never",
       "score": 0
     }],
-    "prompt": "",
+    "prompt": "How often are your looks affected by your job?",
     "number": 2,
     "type": "lifestyle"
   },
   "l3": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
-    },{
-      "value": "Glamorous",
-      "score": 0
-    }, {
-      "value": "Colorful",
+      "value": 18,
       "score": 0
     }],
-    "prompt": "",
+    "prompt": "What is your age?",
     "number": 3,
     "type": "lifestyle"
   },
   "l4": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
+      "value": "Fair",
+      "score": 1
     },{
-      "value": "Glamorous",
-      "score": 0
+      "value": "Fair to Light",
+      "score": 2
     }, {
-      "value": "Colorful",
-      "score": 0
+      "value": "Light",
+      "score": 3
+    },{
+      "value": "Medium",
+      "score": 4
+    }, {
+      "value": "Medium to Dark",
+      "score": 5
+    }, {
+      "value": "Dark",
+      "score": 6
     }],
-    "prompt": "",
+    "prompt": "What is your skin tone?",
     "number": 4,
     "type": "lifestyle"
   },
   "l5": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
+      "value": "Yes",
+      "score": 1
     },{
-      "value": "Glamorous",
-      "score": 0
+      "value": "Somewhat",
+      "score": 3
     }, {
-      "value": "Colorful",
-      "score": 0
+      "value": "No",
+      "score": 6
     }],
-    "prompt": "",
+    "prompt": "Are you an experienced user?",
     "number": 5,
     "type": "lifestyle"
   },
   "l6": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
+      "value": "Luxury",
+      "score": 1
     },{
-      "value": "Glamorous",
-      "score": 0
+      "value": "Drugstore",
+      "score": 3
     }, {
-      "value": "Colorful",
+      "value": "Indie",
+      "score": 2
+    }, {
+      "value": "No Preference",
       "score": 0
     }],
-    "prompt": "",
+    "prompt": "What is your brand type preference?",
     "number": 6,
     "type": "lifestyle"
   },
   "l7": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
+      "value": "Yes",
+      "score": 2
     },{
-      "value": "Glamorous",
-      "score": 0
+      "value": "No",
+      "score": 5
     }, {
-      "value": "Colorful",
+      "value": "No preference",
       "score": 0
     }],
-    "prompt": "",
+    "prompt": "Would you prefer the brand to be well known?",
     "number": 7,
     "type": "lifestyle"
   },
   "p1": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
-    },{
-      "value": "Glamorous",
-      "score": 0
+      "value": "Cool-toned",
+      "score": 3
     }, {
-      "value": "Colorful",
+      "value": "Warm-toned",
+      "score": 4
+    }, {
+      "value": "Neutrals",
+      "score": 8
+    }, {
+      "value": "Rainbow",
+      "score": 1
+    }, {
+      "value": "No preference",
       "score": 0
     }],
-    "prompt": "",
+    "prompt": "Are you looking for a specific color scheme?",
     "number": 1,
     "type": "preference"
   },
   "p2": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
-    },{
-      "value": "Glamorous",
-      "score": 0
+      "value": "Matte",
+      "score": 6
     }, {
-      "value": "Colorful",
-      "score": 0
+      "value": "Metallic/Shimmer",
+      "score": 2
+    }, {
+      "value": "Glitter",
+      "score": 1
+    }, {
+      "value": "A good mixture",
+      "score": 3
     }],
-    "prompt": "",
+    "prompt": "What would you want the shades to be?",
     "number": 2,
     "type": "preference"
   },
   "p3": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
-    },{
-      "value": "Glamorous",
-      "score": 0
-    }, {
-      "value": "Colorful",
-      "score": 0
+      "value": 6,
+      "score": 6
     }],
-    "prompt": "",
+    "prompt": "How many shades are you looking for?",
     "number": 3,
     "type": "preference"
   },
   "p4": {
     "choices": [{
-      "value": "Natural",
-      "score": 0
-    },{
-      "value": "Glamorous",
-      "score": 0
-    }, {
-      "value": "Colorful",
+      "value": 20,
       "score": 0
     }],
-    "prompt": "",
+    "prompt": "How much do you want to spend?",
     "number": 4,
     "type": "preference"
   }
