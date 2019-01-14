@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: textFonts.primary,
-    fontSize: 22,
+    fontSize: 20,
     textAlign: 'center'
   }
 });

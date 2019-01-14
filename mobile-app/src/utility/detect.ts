@@ -14,3 +14,7 @@ export const isLandscape = () => {
   const window = Dimensions.get('window');
   return window.height < window.width;
 }
+
+export const isIos = () => {
+  return Platform.OS === 'ios';
+}

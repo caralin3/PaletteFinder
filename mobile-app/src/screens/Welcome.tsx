@@ -18,9 +18,11 @@ interface WelcomeProps extends
   WelcomeDispatchMappedProps {}
 
 export const DisconnectedWelcome: React.SFC<WelcomeProps> = (props) => (
-  <Layout>
+  <Layout showHeader={true}>
     <View style={styles.container}>
-      <Text style={StyleSheet.flatten([styles.title, {paddingTop: Dimensions.get('window').height / 15}])}>Welcome</Text>
+      <Text style={styles.title}>
+        Welcome
+      </Text>
       <View style={styles.middle}>
         <Image 
           style={styles.image}
@@ -31,7 +33,7 @@ export const DisconnectedWelcome: React.SFC<WelcomeProps> = (props) => (
       <Button
         backgroundColor={colors.neonPink}
         onPress={() => props.navigate('/Question/l1')}
-        style={{marginBottom: Dimensions.get('window').height / 15}}
+        style={{marginBottom: Dimensions.get('window').height / 25}}
         text={content.welcomeButton}
         textColor={colors.white}
       />
@@ -64,7 +66,8 @@ const styles = StyleSheet.create({
   title: {
     color: colors.white,
     fontFamily: textFonts.header,
-    fontSize: 32
+    fontSize: 32,
+    paddingTop: 5
   },
   copy: {
     color: colors.white,

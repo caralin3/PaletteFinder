@@ -7,3 +7,6 @@ export const continueMsg = 'Now let’s pick your Eyeshadow Preferences';
 export const resultsMsg = 'The results are in\, meet your new favorites!';
 export const resultsSaveButton = 'Save Results';
 export const resultsResetButton = 'Start Over';
+export const homeMsg = 'Most Recent Results';
+export const homeHistoryButton = 'View History';
+export const homeResetButton = 'Find Again';

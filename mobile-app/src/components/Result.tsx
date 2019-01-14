@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image as RNImage, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { textFonts, colors } from '../appearance';
+import { Image } from '../types';
 
 export interface ResultProps {
   description: string;
   header?: string;
-  image: string;
+  image: Image;
   price: number;
   link: string;
   name: string;
-  // onPress: () => void;
 }
 
 export const Result: React.SFC<ResultProps> = (props) => (
@@ -20,13 +20,16 @@ export const Result: React.SFC<ResultProps> = (props) => (
     <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
       {props.name} (${props.price})
     </Text>
-    <Image 
+    {/* TODO: Style Image */}
+    <RNImage 
       style={styles.image}
       source={require('../appearance/images/icon.png')}
+      // source={{uri: props.image.src}}
     />
     <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
       {props.description}
     </Text>
+    {/* TODO: Handle url link */}
     <Text style={StyleSheet.flatten([styles.link, styles.baseText])}>
       View on {props.link}
     </Text>

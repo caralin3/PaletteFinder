@@ -12,12 +12,12 @@ export const updateScore = (score: number): UpdateScoreAction => ({
 
 interface ResetScoreAction {
   payload: number;
-  type: 'RESET_ANSWERS';
+  type: 'RESET_SCORE';
 }
 
 export const resetScore = (): ResetScoreAction => ({
   payload: 0,
-  type: 'RESET_ANSWERS'
+  type: 'RESET_SCORE'
 });
 
 type ActionTypes = UpdateScoreAction | ResetScoreAction;
@@ -41,7 +41,7 @@ export const reducer = (
         ...state,
         score: state.score + action.payload
       };
-    case 'RESET_ANSWERS':
+    case 'RESET_SCORE':
       return {
         ...state,
         score: action.payload

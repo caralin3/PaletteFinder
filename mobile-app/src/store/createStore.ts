@@ -17,11 +17,13 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'remote-redux-devtools';
 import { AnswersState, reducer as answersReducer  } from './answers';
 import { LayoutState, reducer as layoutReducer  } from './layout';
+import { PalettesState, reducer as palettesReducer  } from './palettes';
 import { ScoreState, reducer as scoreReducer  } from './score';
 
 export interface ApplicationState {
   answers: AnswersState;
   layout: LayoutState;
+  palettes: PalettesState;
   router: RouterState;
   score: ScoreState;
 }
@@ -39,6 +41,7 @@ export default (history: History.History): Store<ApplicationState> => {
   const rootReducer = combineReducers<ApplicationState>({
     answers: answersReducer,
     layout: layoutReducer,
+    palettes: palettesReducer,
     router: connectRouter(history),
     score: scoreReducer
   });
@@ -46,7 +49,7 @@ export default (history: History.History): Store<ApplicationState> => {
   const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['answers', 'score']
+    whitelist: ['answers', 'palettes', 'score']
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);

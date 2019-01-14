@@ -1,21 +1,27 @@
 import { push } from 'connected-react-router';
 import * as React from 'react';
-import { Platform, ScrollView, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Alert, ScrollView, StyleSheet, Text, View, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
 import { colors, textFonts } from '../appearance';
 import { Button, Layout, Progress } from '../components';
 import { content, questions } from '../data';
-import { Choice, Questions } from '../types';
-import { addAnswer, updateScore } from '../store';
+import { Choice, Questions, Palettes } from '../types';
+import { addAnswer, updateScore, resetAnswers, resetScore, setPalettes } from '../store';
+import { palettesRef } from '../firebase';
+import { DataSnapshot } from 'react-native-firebase/database';
+import { isIos } from '../utility/detect';
 
 interface QuestionStateMappedProps {}
 
 interface QuestionDispatchMappedProps {
   addAnswer: (id: string, choice: Choice) => void;
+  resetAnswers: () => void;
   navigate: (path: string) => void;
   updateScore: (score: number) => void;
+  resetScore: () => void;
+  setPalettes: (palettes: Palettes) => void;
 }
 
 interface QuestionRouteParams {
@@ -34,17 +40,48 @@ interface QuestionState {
 
 export class DisconnectedQuestion extends React.Component<QuestionProps, QuestionState> {
   private scrollView: ScrollView | null = null;
+
   public readonly state: QuestionState = {
     selected: undefined,
     value: undefined,
   }
 
+  public componentDidMount() {
+    const { match, resetAnswers, resetScore } = this.props;
+    if (match.params.id === 'l1') {
+      resetAnswers();
+      resetScore();
+    }
+    if (match.params.id === 'p4') {
+      this.loadPalettes();
+    }
+  }
+
+  private loadPalettes = async () => {
+    const { setPalettes } = this.props;
+    let palettes: Palettes;
+    await palettesRef.orderByChild('score').once('value', (snapshot: any) => (
+      snapshot.forEach((child: DataSnapshot) => {
+        const palette: Palettes = {[child.key as string]: child.val()}
+        palettes = {
+          ...palettes,
+          ...palette
+        }
+        setPalettes(palettes);
+      })
+    ))
+  }
+
   private next = () => {
     const { match, navigate } = this.props;
+    const { selected } = this.state;
     const id = match.params.id;
     const quest = (questions as Questions)[id];
     const type = quest.type.slice(0, 1);
     if (quest.number === 7) {
+      navigate(`/Continue`);
+    } else if (quest.number === 6 && selected && selected.value !== 'No preference') {
+      // Skip 7
       navigate(`/Continue`);
     } else if (id === 'p4') { 
       navigate(`/Results`);
@@ -84,19 +121,21 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
     const { addAnswer, match, updateScore } = this.props;
     const { selected, value } = this.state;
     let choice: Choice | undefined;
-    // if (!!selected) {
-    //   choice = selected;
-    //   this.setState({ selected: undefined });
-    // } else if (!!value) {
-    //   choice = this.handleNumberQuestions(value);
-    //   this.setState({ value: undefined });
-    // }
-    // if (choice) {
-    //   addAnswer(match.params.id, choice);
-    //   updateScore(choice.score);
+    if (!!selected) {
+      choice = selected;
+      this.setState({ selected: undefined });
+    } else if (!!value) {
+      choice = this.handleNumberQuestions(value);
+      this.setState({ value: undefined });
+    }
+    if (choice && this.scrollView) {
+      addAnswer(match.params.id, choice);
+      updateScore(choice.score);
       this.next();
-      this.scrollView && this.scrollView.scrollTo({x: 0, y: 0, animated: true});
-    // }
+      this.scrollView.scrollTo({x: 0, y: 0, animated: true});
+    } else {
+      Alert.alert('Invalid', 'This question is required.');
+    }
   }
 
   public render() {
@@ -106,7 +145,6 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
     const quest = (questions as Questions)[id];
     const type = quest.type.slice(0, 1).toUpperCase() + quest.type.slice(1);
     const inputQuestion = id === 'l3' || id === 'p4';
-    const ios = Platform.OS === 'ios';
 
     return (
       <Layout showHeader={true}>
@@ -125,7 +163,7 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
                 onChangeText={(value) => this.setState({ value })}
                 placeholder="13"
                 returnKeyType="done"
-                style={StyleSheet.flatten([styles.input, ios && {height: 50}])}
+                style={StyleSheet.flatten([styles.input, isIos() && {height: 50}])}
                 value={this.state.value}
               />
               </View> :
@@ -163,8 +201,11 @@ const mapDispatchToProps = (
   dispatch: Dispatch<any>
 ): QuestionDispatchMappedProps => ({
   addAnswer: (id: string, choice: Choice) => dispatch(addAnswer(id, choice)),
+  resetAnswers: () => dispatch(resetAnswers()),
   navigate: (path: string) => dispatch(push(path)),
-  updateScore: (score: number) => dispatch(updateScore(score))
+  updateScore: (score: number) => dispatch(updateScore(score)),
+  resetScore: () => dispatch(resetScore()),
+  setPalettes: (palettes: Palettes) => dispatch(setPalettes(palettes))
 });
 
 export const Question = connect(
