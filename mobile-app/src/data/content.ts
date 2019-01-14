@@ -4,4 +4,6 @@ export const welcomeButton = 'Let\'s Get Swatching!';
 export const nextButton = 'Next';
 export const continueButton = 'Continue';
 export const continueMsg = 'Now let’s pick your Eyeshadow Preferences';
-export const resultsButton = 'Finish';
+export const resultsMsg = 'The results are in\, meet your new favorites!';
+export const resultsSaveButton = 'Save Results';
+export const resultsResetButton = 'Start Over';

@@ -1,10 +1,10 @@
 import { push } from 'connected-react-router';
 import * as React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { colors } from '../appearance';
-import { Button, Layout } from '../components';
+import { colors, textFonts } from '../appearance';
+import { Button, Layout, Result } from '../components';
 import { content } from '../data';
 
 interface ResultsStateMappedProps {}
@@ -17,23 +17,57 @@ interface ResultsProps extends
   ResultsStateMappedProps,
   ResultsDispatchMappedProps {}
 
-export const DisconnectedResults: React.SFC<ResultsProps> = (props) => (
-  <Layout>
-    <View style={styles.container}>
-      <View>
-        <Image style={styles.image} source={{uri: 'https://picsum.photos/250/300'}} />
-        <Text style={styles.copy}>{content.continueMsg}</Text>
-      </View>
-      <Button
-        backgroundColor={colors.neonPink}
-        onPress={() => props.navigate('/Home')}
-        style={styles.button}
-        text={content.continueButton}
-        textColor={colors.white}
-      />
-    </View>
-  </Layout>
-);
+export class DisconnectedResults extends React.Component<ResultsProps> {
+  private handleSave = () => {
+    const { navigate } = this.props;
+    // TODO: Save result with timestamp to store
+    navigate('/Home');
+  }
+
+  public render() {
+    return (
+    <Layout showHeader={true}>
+      <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
+        <Text style={styles.copy}>{content.resultsMsg}</Text>
+        <View style={styles.results}>
+          <Result
+            description="A palette with beautiful colors for girl on a budget."
+            header="Option 1"
+            image="http://placeholder.com"
+            link="ulta.com"
+            name="Makeup Revolution Reloaded Palette Division"
+            price={7}
+          />
+          <Result
+            description="A palette with beautiful colors for girl on a budget."
+            header="Option 2"
+            image="http://placeholder.com"
+            link="sephora.com"
+            name="Huda Beauty the New Nude Palette"
+            price={6}
+          />
+        </View>
+        <View style={styles.buttons}>
+          <Button
+            backgroundColor={colors.neonPink}
+            onPress={this.handleSave}
+            style={styles.button}
+            text={content.resultsSaveButton}
+            textColor={colors.white}
+          />
+          <Button
+            backgroundColor={colors.neonPink}
+            onPress={() => this.props.navigate('/Question/l1')}
+            style={styles.button}
+            text={content.resultsResetButton}
+            textColor={colors.white}
+          />
+        </View>
+      </ScrollView>
+    </Layout>
+  );
+  }
+}
 
 const mapDispatchToProps = (
   dispatch: Dispatch<any>
@@ -49,23 +83,30 @@ export const Results = connect(
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    flex: 1,
     justifyContent: 'space-between'
-  },
-  title: {
-    color: colors.white,
-    paddingTop: 40
   },
   copy: {
     color: colors.white,
-    paddingVertical: 30,
-    width: 250
+    fontFamily: textFonts.primary,
+    fontSize: 22,
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+    textAlign: 'center',
+  },
+  buttons: {
+    flexDirection: 'row'
   },
   button: {
-    marginBottom: 50
+    marginHorizontal: 5,
+    marginVertical: 30,
+    width: 165
+  },
+  results: {
+    flex: 1,
+    marginHorizontal: 25,
   },
   image: {
-    height: 300,
-    width: 250,
+    height: 200,
+    resizeMode: 'contain'
   }
 })

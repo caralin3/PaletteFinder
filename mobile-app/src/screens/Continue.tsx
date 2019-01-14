@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   copy: {
     color: colors.white,
     fontFamily: textFonts.primary,
-    fontSize: 24,
+    fontSize: 22,
     paddingHorizontal: 40,
     paddingTop: 75,
     textAlign: 'center',

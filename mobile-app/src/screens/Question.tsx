@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router';
 import { Dispatch } from 'redux';
 import { colors, textFonts } from '../appearance';
-import { Button, Layout } from '../components';
+import { Button, Layout, Progress } from '../components';
 import { content, questions } from '../data';
 import { Choice, Questions } from '../types';
 import { addAnswer, updateScore } from '../store';
@@ -33,6 +33,7 @@ interface QuestionState {
 }
 
 export class DisconnectedQuestion extends React.Component<QuestionProps, QuestionState> {
+  private scrollView: ScrollView | null = null;
   public readonly state: QuestionState = {
     selected: undefined,
     value: undefined,
@@ -83,18 +84,19 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
     const { addAnswer, match, updateScore } = this.props;
     const { selected, value } = this.state;
     let choice: Choice | undefined;
-    if (!!selected) {
-      choice = selected;
-      this.setState({ selected: undefined });
-    } else if (!!value) {
-      choice = this.handleNumberQuestions(value);
-      this.setState({ value: undefined });
-    }
-    if (choice) {
-      addAnswer(match.params.id, choice);
-      updateScore(choice.score);
+    // if (!!selected) {
+    //   choice = selected;
+    //   this.setState({ selected: undefined });
+    // } else if (!!value) {
+    //   choice = this.handleNumberQuestions(value);
+    //   this.setState({ value: undefined });
+    // }
+    // if (choice) {
+    //   addAnswer(match.params.id, choice);
+    //   updateScore(choice.score);
       this.next();
-    }
+      this.scrollView && this.scrollView.scrollTo({x: 0, y: 0, animated: true});
+    // }
   }
 
   public render() {
@@ -108,7 +110,8 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
 
     return (
       <Layout showHeader={true}>
-        <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
+        <ScrollView style={{flex: 1}} contentContainerStyle={styles.container} ref={ref => this.scrollView = ref}>
+          <Progress count={type === 'Lifestyle' ? 7 : 4} id={parseInt(id.slice(1))} />
           <Text style={styles.title}>
             {type} Question {quest.number}
           </Text>
@@ -191,7 +194,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     color: colors.white,
     fontFamily: textFonts.primary,
-    fontSize: 24,
+    fontSize: 20,
     paddingHorizontal: 30,
     paddingBottom: 50,
   },
@@ -206,9 +209,5 @@ const styles = StyleSheet.create({
     marginTop: 50,
     textAlign: 'right',
     width: 300
-  },
-  image: {
-    height: 300,
-    width: 250,
   }
 })
