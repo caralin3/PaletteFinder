@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image as RNImage, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image as RNImage, Linking, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { textFonts, colors } from '../appearance';
 import { Image } from '../types';
 
@@ -12,29 +12,45 @@ export interface ResultProps {
   name: string;
 }
 
-export const Result: React.SFC<ResultProps> = (props) => (
-  <View style={styles.container}>
-    <Text style={StyleSheet.flatten([styles.header, styles.baseText])}>
-      {props.header}
-    </Text>
-    <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
-      {props.name} (${props.price})
-    </Text>
-    {/* TODO: Style Image */}
-    <RNImage 
-      style={styles.image}
-      // source={require('../appearance/images/icon.png')}
-      source={{uri: props.image.src}}
-    />
-    <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
-      {props.description}
-    </Text>
-    {/* TODO: Handle url link */}
-    <Text style={StyleSheet.flatten([styles.link, styles.baseText])}>
-      View on {props.link}
-    </Text>
-  </View>
-);
+export class Result extends React.Component<ResultProps> {
+
+  private handleLink = () => {
+    const { link } = this.props;
+    Linking.openURL(link).catch(err => console.error('An error occurred', err));
+  }
+
+  private formattedLink = () => {
+    const { link } = this.props;
+    const url = link.split('/');
+    return url[2].slice(4);
+  }
+
+  public render() {
+    const { description, header, image, name, price } = this.props;
+    return (
+      <View style={styles.container}>
+        {!!header && <Text style={StyleSheet.flatten([styles.header, styles.baseText])}>
+          {header}
+        </Text>}
+        <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
+          {name} (${price})
+        </Text>
+        <RNImage
+          style={styles.image}
+          source={{uri: image.src} || require('../appearance/images/icon.png')}
+        />
+        <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
+          {description}
+        </Text>
+        <TouchableOpacity onPress={this.handleLink}>
+          <Text style={StyleSheet.flatten([styles.link, styles.baseText])}>
+            View on {this.formattedLink()}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -60,8 +76,9 @@ const styles = StyleSheet.create({
   image: {
     alignSelf: 'center',
     height: 200,
-    width: 100,
-    resizeMode: 'contain'
+    paddingVertical: 10,
+    resizeMode: 'contain',
+    width: 200
   },
   link: {
     color: colors.neonPink,
