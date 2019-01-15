@@ -54,7 +54,6 @@ export class Result extends React.Component<ResultProps> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.powderPink,
     justifyContent: 'space-between',
     marginBottom: 20,
