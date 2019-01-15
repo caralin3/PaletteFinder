@@ -80,9 +80,9 @@ class DisconnectedPaletteForm extends React.Component<PaletteFormMergedProps, Pa
   }
 
   public render() {
-    const { changed, description, editImage, id, image, link, name, price, score } = this.state;
+    const { changed, description, editImage, file, id, image, link, name, price, score } = this.state;
 
-    const isInvalid = !description || !link || !name || !price || !score;
+    const isInvalid = !description || !link || !name || !price || !score || !file.name;
 
     return (
       <div className="paletteForm">

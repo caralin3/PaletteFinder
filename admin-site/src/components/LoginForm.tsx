@@ -24,11 +24,11 @@ class DisconnectedLoginForm extends React.Component<LoginFormProps, LoginFormSta
   public render() {
     const { email, error, password } = this.state;
 
-    const isInvalid = !password || !email;
+    // const isInvalid = !password || !email;
 
     return (
       <div className='loginForm'>
-        <Form buttonText='Log In' disabled={isInvalid} submit={this.handleSubmit}>
+        <Form buttonText='Log In' submit={this.handleSubmit}>
           <div className="loginForm_form">
             <h2 className="loginForm_title">Login</h2>
             {error && <p>{error.message}</p>}
@@ -50,9 +50,9 @@ class DisconnectedLoginForm extends React.Component<LoginFormProps, LoginFormSta
             />
           </div>
         </Form>
-        <div>
+        {/* <div>
           Don't have an account? | <span className="loginForm_signup" onClick={this.props.onClick}>Sign Up</span>
-        </div>
+        </div> */}
       </div>
     )
   }
