@@ -51,9 +51,6 @@ export class DisconnectedHome extends React.Component<HomeMergedProps, HomeState
     return (
       <Layout showHeader={true}>
         <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
-          <Text style={StyleSheet.flatten([styles.title, {paddingTop: Dimensions.get('window').height / 15}])}>
-            Welcome Back!
-          </Text>
           <Text style={StyleSheet.flatten([styles.copy, !results && {alignSelf: 'center'}])}>
             {!!results ? content.homeMsg : content.homeEmptyMsg}
           </Text>

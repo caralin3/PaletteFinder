@@ -3,6 +3,7 @@ package com.paletteFinder;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 
@@ -33,6 +34,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SplashScreenReactPackage(),
           new RNFirebasePackage(),
           new RNFirebaseDatabasePackage(),
           new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),

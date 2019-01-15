@@ -4342,6 +4342,11 @@ react-native-firebase@^5.1.1:
     opencollective-postinstall "^2.0.0"
     prop-types "^15.6.2"
 
+react-native-splash-screen@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-3.1.1.tgz#1a4e46c9fdce53ff52af2a2cb4181788c4e30b30"
+  integrity sha512-PU2YocOSGbLjL9Vgcq/cwMNuHHKNjjuPpa1IPMuWo+6EB/fSZ5VOmxSa7+eucQe3631s3NhGuk3eHKahU03a4Q==
+
 react-native-typescript-transformer@^1.2.11:
   version "1.2.11"
   resolved "https://registry.yarnpkg.com/react-native-typescript-transformer/-/react-native-typescript-transformer-1.2.11.tgz#679398c27262cf941e5a5f3ea45cf7eea715d557"

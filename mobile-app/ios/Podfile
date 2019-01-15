@@ -16,6 +16,8 @@ target 'paletteFinder' do
   
 
   platform :ios, '9.0'
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'paletteFinderTests' do
     inherit! :search_paths
     # Pods for testing

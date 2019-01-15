@@ -43,7 +43,7 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
   private handleClear = () => {
     const { navigate, resetResults } = this.props;
     resetResults();
-    navigate('/Welcome');
+    navigate('/');
   }
 
   public render() {

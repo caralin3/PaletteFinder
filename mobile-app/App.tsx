@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as History from 'history';
 import { BackHandler } from 'react-native';
 import Config from 'react-native-config';
+import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
 import { Store } from 'redux';
 import { persistStore } from 'redux-persist';
@@ -27,11 +28,12 @@ export default class App extends React.Component<AppProps> {
       let screenName = location.pathname.substr(1);
       const firstIndex = screenName.indexOf('/');
       screenName = firstIndex > -1 ? screenName.substring(0, firstIndex) : screenName;
-      // console.log(screenName);
+      console.log(screenName);
     });
   }
 
   public componentDidMount() {
+    SplashScreen.hide();
     BackHandler.addEventListener('hardwareBackPress', () => {
       this.history.goBack();
       return true;
@@ -45,9 +47,7 @@ export default class App extends React.Component<AppProps> {
   public render() {
     return (
       <Provider store={this.store}>
-        {/* <ConnectedLayout history={this.history}> */}
-          <Router history={this.history} />
-        {/* </ConnectedLayout> */}
+        <Router history={this.history} />
       </Provider>
     );
   }
