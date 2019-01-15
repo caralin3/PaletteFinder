@@ -52,7 +52,7 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
       resetAnswers();
       resetScore();
     }
-    if (match.params.id === 'p4') {
+    if (match.params.id === 'l1') {
       this.loadPalettes();
     }
   }
@@ -132,6 +132,7 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
       addAnswer(match.params.id, choice);
       updateScore(choice.score);
       this.next();
+      // @TODO: Fix scroll
       this.scrollView.scrollTo({x: 0, y: 0, animated: true});
     } else {
       Alert.alert('Invalid', 'This question is required.');

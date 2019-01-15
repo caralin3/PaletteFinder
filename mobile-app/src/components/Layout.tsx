@@ -123,7 +123,6 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
-    // alignItems: 'center',
     backgroundColor: colors.grapePurple,
     flex: 1,
     justifyContent: 'space-between'

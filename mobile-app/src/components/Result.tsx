@@ -23,8 +23,8 @@ export const Result: React.SFC<ResultProps> = (props) => (
     {/* TODO: Style Image */}
     <RNImage 
       style={styles.image}
-      source={require('../appearance/images/icon.png')}
-      // source={{uri: props.image.src}}
+      // source={require('../appearance/images/icon.png')}
+      source={{uri: props.image.src}}
     />
     <Text style={StyleSheet.flatten([styles.text, styles.baseText])}>
       {props.description}
