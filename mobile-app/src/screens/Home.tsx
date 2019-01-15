@@ -6,9 +6,12 @@ import { Dispatch } from 'redux';
 import { colors, textFonts } from '../appearance';
 import { Button, Layout, Result } from '../components';
 import { content } from '../data';
-import { Palettes, Image } from '../types';
+import { ApplicationState } from '../store';
+import { Palettes, Results } from '../types';
 
-interface HomeStateMappedProps {}
+interface HomeStateMappedProps {
+  results: Results | undefined;
+}
 
 interface HomeDispatchMappedProps {
   navigate: (path: string) => any;
@@ -30,10 +33,20 @@ export class DisconnectedHome extends React.Component<HomeMergedProps, HomeState
     palette: {} as Palettes,
   }
 
-  public render() {
-    
+  private getRecentResults = () => {
+    const { results } = this.props;
+    let palettes: Palettes = {} as Palettes;
+    if (results) {
+      Object.keys(results).map((key) => {
+        palettes = results[key].palettes;
+      });
+    }
+    return palettes;
+  }
 
-    const { navigate } = this.props;
+  public render() {
+    const { navigate, results } = this.props;
+    const palettes = this.getRecentResults();
 
     return (
       <Layout showHeader={true}>
@@ -41,35 +54,34 @@ export class DisconnectedHome extends React.Component<HomeMergedProps, HomeState
           <Text style={StyleSheet.flatten([styles.title, {paddingTop: Dimensions.get('window').height / 15}])}>
             Welcome Back!
           </Text>
-          <Text style={styles.copy}>{content.homeMsg}</Text>
-          <View style={styles.results}>
-            <Result
-              description="A palette with beautiful colors for girl on a budget."
-              image={{} as Image}
-              link="ulta.com"
-              name="Makeup Revolution Reloaded Palette Division"
-              price={7}
-            />
-            <Result
-              description="A palette with beautiful colors for girl on a budget."
-              image={{} as Image}
-              link="sephora.com"
-              name="Huda Beauty the New Nude Palette"
-              price={6}
-            />
-          </View>
+          <Text style={StyleSheet.flatten([styles.copy, !results && {alignSelf: 'center'}])}>
+            {!!results ? content.homeMsg : content.homeEmptyMsg}
+          </Text>
+          {!!results && <View style={styles.results}>
+            {!!palettes && Object.keys(palettes).map((key) => {
+              const palette = palettes[key];
+              return <Result
+                key={key}
+                description={palette.description}
+                image={palette.image}
+                link={palette.link}
+                name={palette.name}
+                price={palette.price}
+              />
+            })}
+          </View>}
           <View style={styles.buttons}>
-            <Button
+            {!!results && <Button
               backgroundColor={colors.neonPink}
               onPress={() => navigate('/ResultHistory')}
               style={styles.button}
               text={content.homeHistoryButton}
               textColor={colors.white}
-            />
+            />}
             <Button
               backgroundColor={colors.neonPink}
-              onPress={() => this.props.navigate('/Question/l1')}
-              style={styles.button}
+              onPress={() => navigate('/Question/l1')}
+              style={StyleSheet.flatten([styles.button, !results && {width: 250}])}
               text={content.homeResetButton}
               textColor={colors.white}
             />
@@ -80,6 +92,10 @@ export class DisconnectedHome extends React.Component<HomeMergedProps, HomeState
   }
 }
 
+const mapStateToProps = (state: ApplicationState): HomeStateMappedProps => ({
+  results: state.results.results
+})
+
 const mapDispatchToProps = (
   dispatch: Dispatch<any>
 ): HomeDispatchMappedProps => ({
@@ -87,7 +103,7 @@ const mapDispatchToProps = (
 });
 
 export const Home = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(DisconnectedHome);
 

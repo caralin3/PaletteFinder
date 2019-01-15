@@ -6,16 +6,22 @@ import { Dispatch } from 'redux';
 import { colors, textFonts } from '../appearance';
 import { Button, Layout, Result } from '../components';
 import { content } from '../data';
-import { ApplicationState } from '../store';
-import { Palettes } from '../types';
+import { ApplicationState, saveResult } from '../store';
+import { Answers, Palettes } from '../types';
 
 interface ResultsStateMappedProps {
+  answers: Answers | undefined;
   palettes: Palettes | undefined;
   score: number;
 }
 
 interface ResultsDispatchMappedProps {
   navigate: (path: string) => any;
+  saveResults: (
+    timestamp: string,
+    answers: Answers,
+    palettes: Palettes
+  ) => void;
 }
 
 interface ResultsProps extends
@@ -54,13 +60,17 @@ export class DisconnectedResults extends React.Component<ResultsProps, ResultsSt
         results
       });
     }
-    // TODO: Handle no palettes
+    // @TODO: Handle no palettes
   }
 
   private handleSave = () => {
-    const { navigate } = this.props;
-    // TODO: Save result with timestamp to store
-    navigate('/Home');
+    const { answers, navigate, saveResults } = this.props;
+    const { results } = this.state;
+    const timestamp: string = new Date().toISOString();
+    if (answers && results) {
+      saveResults(timestamp, answers, results);
+      navigate('/Home');
+    }
   }
 
   public render() {
@@ -107,6 +117,7 @@ export class DisconnectedResults extends React.Component<ResultsProps, ResultsSt
 }
 
 const mapStateToProps = (state: ApplicationState): ResultsStateMappedProps => ({
+  answers: state.answers.answers,
   palettes: state.palettes.palettes,
   score: state.score.score
 })
@@ -114,7 +125,12 @@ const mapStateToProps = (state: ApplicationState): ResultsStateMappedProps => ({
 const mapDispatchToProps = (
   dispatch: Dispatch<any>
 ): ResultsDispatchMappedProps => ({
-  navigate: (path: string) => dispatch(push(path))
+  navigate: (path: string) => dispatch(push(path)),
+  saveResults: (
+    timestamp: string,
+    answers: Answers,
+    palettes: Palettes
+  ) => dispatch(saveResult(timestamp, answers, palettes))
 });
 
 export const Results = connect(
@@ -146,9 +162,5 @@ const styles = StyleSheet.create({
   results: {
     flex: 1,
     marginHorizontal: 25,
-  },
-  image: {
-    height: 200,
-    resizeMode: 'contain'
   }
 })

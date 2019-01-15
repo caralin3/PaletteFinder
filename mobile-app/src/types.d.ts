@@ -33,6 +33,13 @@ export interface Questions {
   [id: string]: Question
 }
 
-export interface Answer {
+export interface Answers {
   [id: string]: Choice;
+}
+
+export interface Results {
+  [timestamp: string]: {
+    answers: Answers;
+    palettes: Palettes;
+  }
 }

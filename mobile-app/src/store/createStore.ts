@@ -18,12 +18,14 @@ import { composeWithDevTools } from 'remote-redux-devtools';
 import { AnswersState, reducer as answersReducer  } from './answers';
 import { LayoutState, reducer as layoutReducer  } from './layout';
 import { PalettesState, reducer as palettesReducer  } from './palettes';
+import { ResultsState, reducer as resultsReducer  } from './results';
 import { ScoreState, reducer as scoreReducer  } from './score';
 
 export interface ApplicationState {
   answers: AnswersState;
   layout: LayoutState;
   palettes: PalettesState;
+  results: ResultsState;
   router: RouterState;
   score: ScoreState;
 }
@@ -43,13 +45,14 @@ export default (history: History.History): Store<ApplicationState> => {
     layout: layoutReducer,
     palettes: palettesReducer,
     router: connectRouter(history),
+    results: resultsReducer,
     score: scoreReducer
   });
 
   const persistConfig = {
     key: 'root',
     storage: AsyncStorage,
-    whitelist: ['answers', 'palettes', 'score']
+    whitelist: ['answers', 'palettes', 'results', 'score']
   };
 
   const persistedReducer = persistReducer(persistConfig, rootReducer);

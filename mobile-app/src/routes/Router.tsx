@@ -9,12 +9,12 @@ export const Router = ({ history }: { history: History.History }) => (
   <ConnectedRouter history={history}>
     <View style={styles.container}>
       <Route exact={true} path={'/'} component={Welcome} />
+      <Route path={'/Welcome'} component={Welcome} />
       <Route path={'/Home'} component={Home} />
       <Route path={'/Question/:id'} component={Question} />
       <Route path={'/Continue'} component={Continue} />
       <Route path={'/Results'} component={Results} />
       <Route path={'/ResultHistory'} component={ResultHistory} />
-      {/* @TODO: */}
       {/* <Route path={'/AnswerHistory'} component={AnswerHistory} /> */}
     </View>
   </ConnectedRouter>

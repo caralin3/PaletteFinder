@@ -1,8 +1,8 @@
-import { Answer, Choice } from '../types';
+import { Answers, Choice } from '../types';
 
 // Actions
 interface AddAnswerAction {
-  payload: Answer;
+  payload: Answers;
   type: 'ADD_ANSWER';
 }
 
@@ -14,7 +14,7 @@ export const addAnswer = (id: string, choice: Choice): AddAnswerAction => ({
 });
 
 interface ResetAnswersAction {
-  payload: Answer;
+  payload: Answers;
   type: 'RESET_ANSWERS';
 }
 
@@ -27,7 +27,7 @@ type ActionTypes = AddAnswerAction | ResetAnswersAction;
 
 // Reducer
 export interface AnswersState {
-  answers: Answer | undefined;
+  answers: Answers | undefined;
 }
 
 const initialState: AnswersState = {
