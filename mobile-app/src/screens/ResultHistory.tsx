@@ -4,10 +4,11 @@ import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { colors, textFonts } from '../appearance';
-import { Button, Layout, Result } from '../components';
+import { Button, Layout, Result, Accordion } from '../components';
 import { content } from '../data';
 import { ApplicationState, resetResults } from '../store';
 import { Palettes, Results } from '../types';
+import { AccordionData } from '../components/Accordion';
 
 interface ResultHistoryStateMappedProps {
   results: Results | undefined;
@@ -35,9 +36,20 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
   }
 
   private formatDate = (timestamp: string) => {
-    const date = new Date(timestamp);
-    return (date.getMonth() + 1) + '/' + date.getDate() + '/' 
-      + date.getFullYear() + ' ' + date.toLocaleTimeString();
+    const t = new Date(timestamp);
+    const date = (t.getMonth() + 1) + '/' + t.getDate() + '/' + t.getFullYear();
+    let h = t.getHours();
+    let m = t.getMinutes();
+    let dd = 'AM';
+    if (h >= 12) {
+      h -= 12;
+      dd = 'PM';
+    }
+    if (h == 0) {
+      h = 12;
+    }
+    const time = h + ':' + (m < 10 ? '0' : '') + m + ' ' + dd;
+    return ( date + ' ' + time);
   }
 
   private handleClear = () => {
@@ -46,8 +58,34 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
     navigate('/Welcome');
   }
 
+  private getResults = () => {
+    const { results } = this.props;
+    const data: AccordionData[] = [];
+    if (results) {
+      Object.keys(results).forEach(timestamp => {
+        const palettes = results[timestamp].palettes;
+        Object.keys(palettes).forEach(key => {
+          const palette = palettes[key];
+          data.push({
+            title: this.formatDate(timestamp),
+            view: <Result
+              key={key}
+              description={palette.description}
+              image={palette.image}
+              link={palette.link}
+              name={palette.name}
+              price={palette.price}
+            />
+          })
+        })
+      })
+    }
+    return data;
+  }
+
   public render() {
     const { navigate, results } = this.props;
+    const resHistory = this.getResults();
 
     return (
       <Layout showHeader={true}>
@@ -55,38 +93,25 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
           <Text style={styles.title}>
             Finder History
           </Text>
-          {!!results ? Object.keys(results).map((key) => {
-              const palettes = results[key].palettes;
-              return (
-                <View style={styles.results} key={key}>
-                  <Text style={styles.copy}>{this.formatDate(key)}</Text>
-                  <View style={styles.results}>
-                    {Object.keys(palettes).map((key) => {
-                      const palette = palettes[key];
-                      return <Result
-                        key={key}
-                        description={palette.description}
-                        image={palette.image}
-                        link={palette.link}
-                        name={palette.name}
-                        price={palette.price}
-                      />
-                    })}
-                  </View>
-                </View>
-              )}
-            ) :
+          {!!results ? <Accordion data={resHistory} /> :
             <Text style={StyleSheet.flatten([styles.copy, !results && {alignSelf: 'center'}])}>
               {content.historyEmptyMsg}
             </Text>}
-          <View style={styles.buttons}>
           {!!results && <Button
+            backgroundColor={colors.neonPink}
+            onPress={this.handleClear}
+            style={styles.clearButton}
+            text={content.historyClearButton}
+            textColor={colors.white}
+          />}
+          <View style={styles.buttons}>
+            <Button
               backgroundColor={colors.neonPink}
-              onPress={this.handleClear}
-              style={styles.button}
-              text={content.historyClearButton}
+              onPress={() => navigate('/Home')}
+              style={StyleSheet.flatten([styles.button, !results && {width: 250}])}
+              text={content.historyHomeButton}
               textColor={colors.white}
-            />}
+            />
             <Button
               backgroundColor={colors.neonPink}
               onPress={() => navigate('/Question/l1')}
@@ -138,16 +163,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     paddingVertical: 30,
   },
-  results: {
-    flex: 1,
-    marginHorizontal: 25,
-  },
   buttons: {
     flexDirection: 'row'
   },
   button: {
     marginHorizontal: 5,
     marginVertical: 30,
+    width: 165
+  },
+  clearButton: {
+    marginHorizontal: 5,
+    marginTop: 40,
+    marginBottom: 20,
     width: 165
   }
 })

@@ -13,4 +13,5 @@ export const homeHistoryButton = 'View History';
 export const homeResetButton = 'Find Again';
 export const historyEmptyMsg = 'History is Empty';
 export const historyClearButton = 'Clear History';
+export const historyHomeButton = 'Back Home';
 export const historyResetButton = 'Find Again';
