@@ -46,6 +46,14 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
     value: undefined,
   }
 
+  public componentDidUpdate(prevProps: QuestionProps) {
+    if (this.props.location !== prevProps.location) {
+      if (this.scrollView) {
+        this.scrollView.scrollTo({x: 0, y: 0, animated: false});
+      }
+    }
+  }
+
   public componentDidMount() {
     const { match, resetAnswers, resetScore } = this.props;
     if (match.params.id === 'l1') {
@@ -132,8 +140,6 @@ export class DisconnectedQuestion extends React.Component<QuestionProps, Questio
       addAnswer(match.params.id, choice);
       updateScore(choice.score);
       this.next();
-      // @TODO: Fix scroll
-      this.scrollView.scrollTo({x: 0, y: 0, animated: true});
     } else {
       Alert.alert('Invalid', 'This question is required.');
     }

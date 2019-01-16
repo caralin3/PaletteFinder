@@ -54,7 +54,6 @@ export class Result extends React.Component<ResultProps> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.powderPink,
     justifyContent: 'space-between',
     marginBottom: 20,
@@ -75,8 +74,8 @@ const styles = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    height: 200,
-    paddingVertical: 10,
+    height: 150,
+    marginVertical: 15,
     resizeMode: 'contain',
     width: 200
   },

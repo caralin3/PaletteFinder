@@ -17,3 +17,4 @@ export const homeResetButton = 'Find Palettes';
 export const historyEmptyMsg = 'History is Empty';
 export const historyClearButton = 'Clear History';
 export const historyResetButton = 'Find Palettes';
+export const historyHomeButton = 'Back Home';

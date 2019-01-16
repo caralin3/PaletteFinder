@@ -60,7 +60,6 @@ export class DisconnectedResults extends React.Component<ResultsProps, ResultsSt
         results
       });
     }
-    // @TODO: Handle no palettes
   }
 
   private handleSave = () => {
