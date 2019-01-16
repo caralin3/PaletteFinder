@@ -8,7 +8,7 @@ import { Continue, Home, Question, ResultHistory, Results, Welcome } from '../sc
 export const Router = ({ history }: { history: History.History }) => (
   <ConnectedRouter history={history}>
     <View style={styles.container}>
-      <Route exact={true} path={'/'} component={Welcome} />
+      <Route exact={true} path={'/'} component={ResultHistory} />
       <Route path={'/Welcome'} component={Welcome} />
       <Route path={'/Home'} component={Home} />
       <Route path={'/Question/:id'} component={Question} />

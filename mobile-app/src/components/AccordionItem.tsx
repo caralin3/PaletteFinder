@@ -16,7 +16,7 @@ interface AccordionItemState {
 
 export class AccordionItem extends React.Component<AccordionItemProps, AccordionItemState> {
   public readonly state: AccordionItemState = {
-    animation: new Animated.Value(40),
+    animation: new Animated.Value(50),
     expanded: false,
     maxHeight: 0,
     minHeight: 0,
@@ -84,10 +84,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 10
+    padding: 12
   },
   title: {
-    color: colors.black,
+    color: colors.grapePurple,
     fontFamily: textFonts.primary,
     fontSize: 16,
     fontWeight: 'bold'
@@ -99,7 +99,6 @@ const styles = StyleSheet.create({
   },
   body: {
     marginHorizontal: 10,
-    paddingBottom: 10,
-    paddingTop: 0
+    paddingBottom: 10
   }
 });

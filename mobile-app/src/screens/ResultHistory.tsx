@@ -53,32 +53,46 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
   }
 
   private handleClear = () => {
-    const { navigate, resetResults } = this.props;
+    const { resetResults } = this.props;
     resetResults();
-    navigate('/Welcome');
   }
 
   private getResults = () => {
     const { results } = this.props;
     const data: AccordionData[] = [];
     if (results) {
-      Object.keys(results).forEach(timestamp => {
+      const keys = Object.keys(results);
+      for ( let i = keys.length - 1; i >= 0; i-- ) {
+        const timestamp = keys[i];
         const palettes = results[timestamp].palettes;
+        let options: Palettes = {};
+        let count = 0;
         Object.keys(palettes).forEach(key => {
-          const palette = palettes[key];
-          data.push({
-            title: this.formatDate(timestamp),
-            view: <Result
+          if (count < 2) {
+            const palette = {[key]: palettes[key]}
+            options = {
+              ...options,
+              ...palette
+            };
+            count++;
+          }
+        })
+        data.push({
+          title: this.formatDate(timestamp),
+          view: <View style={{paddingBottom: 35}}>
+            {Object.keys(options).map((key) => {
+            const palette = options[key];
+            return <Result
               key={key}
               description={palette.description}
               image={palette.image}
               link={palette.link}
               name={palette.name}
               price={palette.price}
-            />
-          })
-        })
-      })
+            />})}
+          </View>
+        });
+      }
     }
     return data;
   }
@@ -96,7 +110,8 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
           {!!results ? <Accordion data={resHistory} /> :
             <Text style={StyleSheet.flatten([styles.copy, !results && {alignSelf: 'center'}])}>
               {content.historyEmptyMsg}
-            </Text>}
+            </Text>
+          }
           {!!results && <Button
             backgroundColor={colors.neonPink}
             onPress={this.handleClear}
@@ -108,14 +123,14 @@ export class DisconnectedResultHistory extends React.Component<ResultHistoryMerg
             <Button
               backgroundColor={colors.neonPink}
               onPress={() => navigate('/Home')}
-              style={StyleSheet.flatten([styles.button, !results && {width: 250}])}
+              style={styles.button}
               text={content.historyHomeButton}
               textColor={colors.white}
             />
             <Button
               backgroundColor={colors.neonPink}
               onPress={() => navigate('/Question/l1')}
-              style={StyleSheet.flatten([styles.button, !results && {width: 250}])}
+              style={styles.button}
               text={content.historyResetButton}
               textColor={colors.white}
             />
