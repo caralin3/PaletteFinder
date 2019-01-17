@@ -1,5 +1,9 @@
-/* .app {
-  background-color: #321547;
-  display: flex;
-  flex: 1;
-} */
+@font-face {
+  font-family: CherrySwash-Bold;
+  src: url('./appearance/fonts/CherrySwash-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: Karla-Bold;
+  src: url('./appearance/fonts/Karla-Bold.ttf') format('truetype');
+}

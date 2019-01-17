@@ -7,6 +7,7 @@
 }
 
 .paletteForm_title {
+  font-family: Karla-Bold;
   margin: 0;
   padding-bottom: 1rem;
 }
@@ -48,14 +49,17 @@
 }
 
 .paletteForm_name {
+  font-family: Karla-Bold;
   width: 300px;
 }
 
 .paletteForm_link {
+  font-family: Karla-Bold;
   width: 200px;
 }
 
 .paletteForm_description {
+  font-family: Karla-Bold;
   height: 150px;
   width: 300px;
 }
@@ -66,11 +70,13 @@
 
 .paletteForm_label {
   align-self: flex-start;
+  font-family: Karla-Bold;
   display: flex;
   flex-direction: column;
 }
 
 .paletteForm_label-text {
+  font-family: Karla-Bold;
   padding: 1rem 0 0.5rem;
 }
 

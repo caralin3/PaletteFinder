@@ -1,6 +1,7 @@
 .button,
 .button-disabled {
   background-color: #e90798;
+  font-family: Karla-Bold;
   font-size: 14px;
   margin-top: 1.5rem;
   padding: 0.5rem 2rem;

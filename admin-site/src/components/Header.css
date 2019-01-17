@@ -13,8 +13,13 @@
 }
 
 .header_title {
+  font-family: CherrySwash-Bold;
   font-size: 18px;
   font-weight: normal;
+}
+
+.header_cta {
+  font-family: Karla-Bold;
 }
 
 .header_cta:focus,

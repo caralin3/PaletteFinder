@@ -5,6 +5,7 @@
 }
 
 .signupForm_title {
+  font-family: Karla-Bold;
   margin: 0;
   padding-bottom: 1rem;
 }
@@ -22,6 +23,7 @@
 
 .signupForm_label {
   align-self: flex-start;
+  font-family: Karla-Bold;
   padding: 1rem 0 0.5rem;
 }
 
