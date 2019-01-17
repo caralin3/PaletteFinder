@@ -8,6 +8,7 @@ import { Store } from 'redux';
 import { persistStore } from 'redux-persist';
 import { createHistory, Router } from './src/routes';
 import { createStore, ApplicationState } from './src/store';
+import { isIos } from './src/utility/detect';
 
 const build = Config.BUILD;
 const appId = Config.APP_ID;
@@ -33,7 +34,7 @@ export default class App extends React.Component<AppProps> {
   }
 
   public componentDidMount() {
-    SplashScreen.hide();
+    !isIos() && SplashScreen.hide();
     BackHandler.addEventListener('hardwareBackPress', () => {
       this.history.goBack();
       return true;

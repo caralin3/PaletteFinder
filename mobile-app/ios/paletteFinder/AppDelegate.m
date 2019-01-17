@@ -12,7 +12,7 @@
 #import <Firebase.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import <SplashScreen.h>
+// #import <SplashScreen.h>
 
 @implementation AppDelegate
 
@@ -46,7 +46,7 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  [SplashScreen show]; // Intialize SplashScreen
+  // [SplashScreen show]; // Intialize SplashScreen
   return YES;
 }
 

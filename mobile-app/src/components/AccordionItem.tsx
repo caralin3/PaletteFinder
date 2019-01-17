@@ -27,6 +27,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     let initialValue = expanded ? maxHeight + minHeight : minHeight,
       finalValue = expanded ? minHeight : maxHeight + minHeight;
 
+    // this.setState({ animation: new Animated.Value(300) })
     this.setState({ expanded : !expanded });
     animation.setValue(initialValue);
     Animated.spring(animation, {toValue: finalValue}).start();
@@ -34,7 +35,7 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
 
   private _setMaxHeight = (event: any) => {
     this.setState({
-      maxHeight: event.nativeEvent.layout.height
+      maxHeight: event.nativeEvent.layout.height + 250
     });
   }
 

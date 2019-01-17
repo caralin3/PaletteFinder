@@ -59,8 +59,8 @@ export class DisconnectedLayout extends React.Component<LayoutMergedProps, Layou
     return (
       <SafeAreaView style={styles.safeArea}>
         {(!detect.isIphoneX() && Platform.OS === 'ios') && (
-          <View style={{height}}>
-            <StatusBar />
+          <View style={{backgroundColor: colors.grapePurple, height}}>
+            <StatusBar barStyle="light-content" />
           </View>
         )}
         {/* <DrawerLayout
