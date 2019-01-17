@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Animated, StyleSheet, Text, TouchableHighlight, View } from 'react-native';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import { textFonts, colors } from '../appearance';
+import { isIos } from '../utility/detect';
 
 interface AccordionItemProps {
   title: string;
@@ -27,7 +28,6 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
     let initialValue = expanded ? maxHeight + minHeight : minHeight,
       finalValue = expanded ? minHeight : maxHeight + minHeight;
 
-    // this.setState({ animation: new Animated.Value(300) })
     this.setState({ expanded : !expanded });
     animation.setValue(initialValue);
     Animated.spring(animation, {toValue: finalValue}).start();
@@ -35,7 +35,8 @@ export class AccordionItem extends React.Component<AccordionItemProps, Accordion
 
   private _setMaxHeight = (event: any) => {
     this.setState({
-      maxHeight: event.nativeEvent.layout.height + 250
+      maxHeight: isIos() ? event.nativeEvent.layout.height + 200 :
+        event.nativeEvent.layout.height + 50
     });
   }
 
